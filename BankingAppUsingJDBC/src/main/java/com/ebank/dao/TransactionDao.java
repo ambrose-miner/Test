@@ -9,18 +9,18 @@ import java.sql.DriverManager;
 
 public class TransactionDao {
 	
-	public void tLog() {
+	public void tLog(Transaction X) {
 		try {
 //		Class.forName("com.mysql.cj.jdbc.Driver");
 //		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
 			Connection con = DbConnection.getDbConnection(); 
 		PreparedStatement pstmt = con.prepareStatement("insert into transaction values(?,?,?,?,?)");
-		pstmt.setInt(1, transaction.setTid());
-		pstmt.setInt(2, transaction.setAccno());
-		pstmt.setDot(3, transaction.setDot());
-		pstmt.setString(4, transaction.setTtype());
-		pstmt.setFloat(5, transaction.setAmount());
-		pstmt.execute();     // executeInsert();   ???
+		pstmt.setInt(1, X.getTid());
+		pstmt.setInt(2, X.getAccno());
+		pstmt.setDate(3, X.getDot());
+		pstmt.setString(4, X.getTtype());
+		pstmt.setFloat(5, X.getAmount());
+		pstmt.execute();     
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		

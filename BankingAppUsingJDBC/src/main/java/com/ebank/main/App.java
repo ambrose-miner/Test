@@ -3,7 +3,9 @@ package com.ebank.main;
 import java.util.Scanner;
 
 import com.ebank.bean.Account;
+import com.ebank.bean.Transaction;
 import com.ebank.service.AccountService;
+import com.ebank.service.TransactionService;
 
 public class App {
 
@@ -15,6 +17,7 @@ public class App {
 	int choice;
 	String result;
 	String con;
+	
 	AccountService as = new AccountService();
 	System.out.println("Welcome to EBanking Application!");
 	do {
@@ -42,41 +45,42 @@ public class App {
 		       break;
 		
 		       
-		case 2:System.out.println("Enter the account number");
+		case 2:System.out.println("Enter the account number"); //withdraw logic
 	       accno = sc.nextInt();
 	       
 	       System.out.println("Enter the amount");
 	       amount = sc.nextFloat();
 	       
-	       Account acc1 = new Account();
-	       acc1.setAccno(accno);
-	       acc1.setAmount(amount);
-	       
-	       result = as.withdrawn(acc1);
+	       Transaction withdrawTransaction = new Transaction(accno, amount, "Withdraw" );
+	       TransactionService wtService = new TransactionService();
+
+	       result = wtService.withdraw(withdrawTransaction);
 	       System.out.println(result);
 	       break;       
 		
 	       
-		case 3:System.out.println("Enter the account number");
+		case 3:System.out.println("Enter the account number"); //deposit logic
 	       accno = sc.nextInt();
 	       
 	       System.out.println("Enter the amount");
 	       amount = sc.nextFloat();
 	       
-	       Account acc2 = new Account();
-	       acc2.setAccno(accno);
-	      
-	       acc2.setAmount(amount);
-	       
-	       result = as.deposit(acc2);
+	       Transaction depositTransaction = new Transaction(accno, amount, "Deposit" );
+	       TransactionService dtService = new TransactionService();
+
+	       result = dtService.deposit(depositTransaction);
 	       System.out.println(result);
+	       
 	       break;
 	       
 		case 4:System.out.println("Enter the account number");
-	       accno = sc.nextInt();
-	       result = as.findBalance(accno);
-	       System.out.println(result);
-	       break;
+			accno = sc.nextInt();
+	       	Transaction fBalanceTransaction = new Transaction(accno, amount, "Check Balance");
+	       	TransactionService fBService = new TransactionService();
+			
+			result = as.findBalance(accno);
+			System.out.println(result);
+			break;
 	       
 	       
 		default :System.out.println("Wrong choice");

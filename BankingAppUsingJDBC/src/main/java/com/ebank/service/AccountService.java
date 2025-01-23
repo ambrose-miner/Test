@@ -7,41 +7,41 @@ public class AccountService {
 
 	AccountDao ad = new AccountDao();
 	
-	public String createAccount(Account account) {
-		if(account.getAmount()<1000) {
-			return "To create account need min 1000";
-		}else if(ad.createAccount(account)>0) {
-			return "Account created successfully";
+	public String createAccount(Account newAccount) {
+		if(newAccount.getAmount()<1000) {
+			return "Minimum deposit of 1000 required to open account";
+		}else if(ad.createAccount(newAccount)>0) {
+			return "A new account was successfully created";
 		}else {
-			return "Account didn't create";
+			return "Account couldn't be created";
 		}
 	}
 	
-	public String withdrawn(Account account) {
-		float balance =ad.findBalance(account.getAccno()); 
+	public String withdraw(Account withdrawAccount) {
+		float balance =ad.findBalance(withdrawAccount.getAccno()); 
 		if(balance==-1) {
 			return "Account doesn't exists";
 		}else {
-			if(balance >  account.getAmount()) {
+			if(balance >  withdrawAccount.getAmount()) {
 				
-				if(ad.withdrawn(account)>0) {
-					return "Withdraw done successfully";
+				if(ad.withdraw(withdrawAccount)>0) {
+					return "Funds withdrawn successfully";
 				}else {
-					return "Didn't withdrawn";
+					return "Withdrawl couldn't be completed";
 				}
 				
 	
 			}else {
-				return "InSufficient amount you can't withdraw";
+				return "Withdrawl failed insufficient funds";
 			}
 		}
 	}
 	
-	public String deposit(Account account) {
-		if(ad.deposit(account)>0) {
-			return "Deposited amount successfully";
+	public String deposit(Account depostAccount) {
+		if(ad.deposit(depostAccount)>0) {
+			return "Deposite was successfully compleated";
 		}else {
-			return "Amount didn't deposit";
+			return "Error Deposit failed";
 		}
 	}
 	

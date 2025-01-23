@@ -11,56 +11,50 @@ import com.ebank.resource.DbConnection;
 
 public class AccountDao {
 
-	public int createAccount(Account account) {
+	public int createAccount(Account newAccount) {
 		try {
-//		Class.forName("com.mysql.cj.jdbc.Driver");
-//		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
-		Connection con = DbConnection.getDbConnection();
-		PreparedStatement pstmt = con.prepareStatement("insert into account values(?,?,?)");
-		pstmt.setInt(1, account.getAccno());
-		pstmt.setString(2, account.getName());
-		pstmt.setFloat(3, account.getAmount());
-		int result = pstmt.executeUpdate();
-		return result;
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			return 0;
-		}
-	}
-	
-	
-	public int withdrawn(Account account) { //Insert (, Transaction transaction)??
-		try {
-//		Class.forName("com.mysql.cj.jdbc.Driver");
-//		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
 			Connection con = DbConnection.getDbConnection();
-		PreparedStatement pstmt = con.prepareStatement("update account set amount = amount-? where accno=?");
-		pstmt.setFloat(1, account.getAmount());
-		pstmt.setInt(2, account.getAccno());
-		int result = pstmt.executeUpdate();	// the query effect how many record it return count. 
-		return result;
-//		PreparedStatment pstmt2 = con.prepareStatment("insert into transaction values(?,?,?,?,?)");
-//		pstmt2.setInt(1, transaction.setTid());
-//		pstmt2.setInt(2, transaction.setAccno());
-//		pstmt2.setDot(3, transaction.setDot());
-//		pstmt2.setString(4, transaction.setTtype());
-//		pstmt2.setFloat(5, transaction.setAmount());
+			PreparedStatement pstmt = con.prepareStatement("insert into account values(?,?,?)");
+			pstmt.setInt(1, newAccount.getAccno());
+			pstmt.setString(2, newAccount.getName());
+			pstmt.setFloat(3, newAccount.getAmount());
+			int result = pstmt.executeUpdate();
+			return result;
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			return 0;
 		}
 	}
 	
-	public int deposit(Account account) {
+	
+	public int withdraw(Account wAccount) { //Insert (, Transaction transaction)??
 		try {
-//		Class.forName("com.mysql.cj.jdbc.Driver");
-//		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
+			Connection con = DbConnection.getDbConnection();
+			PreparedStatement pstmt = con.prepareStatement("update account set amount = amount-? where accno=?");
+			pstmt.setFloat(1, wAccount.getAmount());
+			pstmt.setInt(2, wAccount.getAccno());
+			int result = pstmt.executeUpdate();	// the query effect how many record it return count. 
+			return result;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return 0;
+		}
+	}
+	
+	public int deposit(Account dAccount) {
+		try {
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("update account set amount = amount+? where accno=?");
-		pstmt.setFloat(1, account.getAmount());
-		pstmt.setInt(2, account.getAccno());
-		int result = pstmt.executeUpdate();
-		return result;
+			pstmt.setFloat(1, dAccount.getAmount());
+			pstmt.setInt(2, dAccount.getAccno());
+			int result = pstmt.executeUpdate();
+			return result;
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			return 0;
@@ -69,21 +63,21 @@ public class AccountDao {
 	
 	public float findBalance(int accno) {
 		try {
-//		Class.forName("com.mysql.cj.jdbc.Driver");
-//		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/databasename", "root", "MySQLPasword");
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select amount from account where accno=?");
 		
-		pstmt.setInt(1, accno);
+			pstmt.setInt(1, accno);
 		
-		ResultSet rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 		
-		if(rs.next()) {
-			float balance = rs.getFloat("amount");
-			return balance;
-		}else {
-			return -1;
-		}
+			if(rs.next()) {
+				float balance = rs.getFloat("amount");
+				return balance;
+			}else {
+				return -1;
+			}
 		
 		} catch (Exception e) {
 			System.out.println(e.toString());
