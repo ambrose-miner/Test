@@ -77,7 +77,7 @@ public class App {
 			accno = sc.nextInt();
 	       	Transaction fBalanceTransaction = new Transaction(accno, amount, "Check Balance");
 	       	TransactionService fBService = new TransactionService();
-			
+			amount = 0;
 			result = as.findBalance(accno);
 			System.out.println(result);
 			break;
