@@ -1,6 +1,6 @@
 package bean;
 
-public class zumbaMembers {
+public class zumbaMember {
 private int member_id;
 private String name;
 private String email;
