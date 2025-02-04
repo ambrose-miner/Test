@@ -20,7 +20,15 @@ public class zumbaMemberService {
 		joinMember.setname(joinMember.getname());
 		joinMember.setemail(joinMember.getemail());
 		output = ZMDao.join(joinMember);
-		
 
 	}
+	public String Edit(zumbaMember EditMember) {
+		
+		zumbaMember EditMember = new zumbaMember();
+		EditMember.setday(EditMember.getname());
+		EditMember.settime(EditMember.getemail());
+		
+		output = ZMDao.Edit(EditMember);
+	}
+	
 }
