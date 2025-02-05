@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2>Add Event Details</h2>
 
+<a href="index.html">Back</a>
 </body>
 </html>
