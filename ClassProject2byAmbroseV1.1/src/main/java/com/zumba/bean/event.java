@@ -7,7 +7,7 @@ private String day;
 private String time;
 public enum amorpm {AM,PM};
 private String location;
-private amorpm AMPM;
+public amorpm AMPM; //changed to public for enum testing.
 
 public amorpm getAMPM() {
 	return AMPM;

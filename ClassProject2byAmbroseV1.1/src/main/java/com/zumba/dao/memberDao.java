@@ -11,7 +11,7 @@ import com.zumba.resource.DbConnection;
 
 public class memberDao {
 
-	public List<member> viewAllevent() {
+	public List<member> viewAllmember() {
 		List<member> listOfmember = new ArrayList<member>();
 		try {
 		Connection con = DbConnection.getDbConnection();

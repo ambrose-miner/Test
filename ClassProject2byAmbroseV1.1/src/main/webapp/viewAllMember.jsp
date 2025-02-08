@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Members</title>
 </head>
-<h2>View Members Details</h2>
+<h2>View All Member Details</h2>
 
 <table border="1">
 	<tr>
@@ -17,11 +18,10 @@
 	</tr>
 	<core:forEach items="${sessionScope.member}" var="event">
 		<tr>
-			<td><core:out value="${event.getMID()}"></core:out> </td>
-			<td><core:out value="${event.getf_name()}"></core:out> </td>
-			<td><core:out value="${event.getl_name()}"></core:out> </td>
-			
-			<td><core:out value="${event.getemail()}"></core:out> </td>
+			<td><core:out value="${member.getMID()}"></core:out> </td>
+			<td><core:out value="${member.getf_name()}"></core:out> </td>
+			<td><core:out value="${member.getl_name()}"></core:out> </td>			
+			<td><core:out value="${member.getemail()}"></core:out> </td>
 		</tr>
 	</core:forEach>
 </table>

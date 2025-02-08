@@ -24,7 +24,9 @@ public class eventDao {
 			bb.setDay(rs.getString("day"));
 			bb.setTime(rs.getString("time"));
 			
-			bb.setAMPM(rs.getamorpm({AM,PM})); //Why won't enum value pass???
+			bb.setAMPM(rs.getamorpm(AMPM)); //Why won't enum value pass???
+			bb.setAMPM(rs.getAMPM(amorpm));
+			bb.setamorpm(rs.getAMPM(aMPM));
 			
 			bb.setLocation(rs.getString("location"));
 			

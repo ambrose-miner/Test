@@ -8,7 +8,7 @@
 <title>Zumba Class Schedule</title>
 </head>
 <body>
-<h2>View All Event Details</h2>
+<h2>All Event Details</h2>
 
 <table border="1">
 	<tr>
