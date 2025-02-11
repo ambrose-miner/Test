@@ -12,7 +12,9 @@ import com.zumba.resource.DbConnection;
 public class memberEventDao {
 
 	
-	public List<memberEvent> addMemberToEvent() {
+	public List<memberEvent> addMemberToEvent() { 
+		// I dont want to pass list of member event here.... 
+		//do I event want this function here
 		List<memberEvent> listOfmemberEvent = new ArrayList<memberEvent>();
 		try {
 		Connection con = DbConnection.getDbConnection();

@@ -20,7 +20,7 @@ member mE = new member();
 	public List<member> viewAllmemberDetails() {
 		return bd.viewAllmember();	
 	}
-	public member viewMemberDetails(){
+	public member viewMemberDetails("select * from member where MID = input" ){ //input????
 		
 		return viewMemberDetails();
 		
@@ -30,17 +30,17 @@ member mE = new member();
 		try {
 		Connection con = DbConnection.getDbConnection();
 		PreparedStatement pstmt = con.prepareStatement("update member");	
-		ResultSet rs = pstmt.executeUpdate();		
-		while(rs.next()) {
+		 uM = pstmt.executeUpdate();	//why does it want to make uM an integer????	
+		while(uM.next()) {
 			
 			member mE = new member();
 			//mE.setMID(rs.getInt("MID")); This is auto generated so I don't need it....?
-			mE.setF_name(rs.getString("f_name"));
-			mE.setL_name(rs.getString("l_name"));
-			mE.setEmail(rs.getString("email"));
+			mE.setF_name(uM.getString("f_name"));
+			mE.setL_name(uM.getString("l_name"));
+			mE.setEmail(uM.getString("email"));
 			
 			
-			member.add(mE);		}
+			}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
