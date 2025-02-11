@@ -16,6 +16,7 @@ public class EventDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from event");
+			
 			ResultSet rs = pstmt.executeQuery();		 
 					while(rs.next()) {
 					
@@ -32,19 +33,20 @@ public class EventDao {
 	return listOfevent;
 	}
 	
-	public List<Event> viewEventsForMember() {
+	public List<Event> viewEventsForMember(int MID) {//add bean here later.
 		List<Event> eventsForMember = new ArrayList<Event>();
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from Event innerjoin MemberEvent on Event.EID = MemberEvent.EID where MID = (?)");
+			pstmt.setInt(0, MID);
 			ResultSet rs2 = pstmt.executeQuery();
 					while(rs2.next()) {
-						Event mm = new Event();
-						mm.setEID(rs2.getInt("EID"));
-						mm.setDay(rs2.getString("day"));
-						mm.setTime(rs2.getString("time"));
-						mm.setLocation(rs2.getString("location"));
-						eventsForMember.add(mm);		
+						Event currentEvents = new Event();
+						currentEvents.setEID(rs2.getInt("EID"));
+						currentEvents.setDay(rs2.getString("day"));
+						currentEvents.setTime(rs2.getString("time"));
+						currentEvents.setLocation(rs2.getString("location"));
+						eventsForMember.add(currentEvents);		
 					}
 		} catch (Exception e) {
 			System.err.println(e.toString());
@@ -52,24 +54,24 @@ public class EventDao {
 	return eventsForMember;
 	}
 	
-	public Event viewSpecificEvent() {
-		Event specificEvent = viewSpecificEvent();
+	public Event viewSpecificEvent(int EID) {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select from Event where EID = (?)");
+			pstmt.setInt(0, EID);
 			ResultSet rs3 = pstmt.executeQuery();
 					while(rs3.next()) {
-						Event se = new Event();
-						se.setEID(rs3.getInt("EID"));
-						se.setDay(rs3.getString("day"));
-						se.setTime(rs3.getString("time"));
-						se.setLocation(rs3.getString("location"));
-						specificEvent.add(se);	//Why????	
+						Event currentSpecificEvent = new Event();
+						currentSpecificEvent.setEID(rs3.getInt("EID"));
+						currentSpecificEvent.setDay(rs3.getString("day"));
+						currentSpecificEvent.setTime(rs3.getString("time"));
+						currentSpecificEvent.setLocation(rs3.getString("location"));
+						Event.add(currentSpecificEvent);	//Why????	
 					}
 			
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
-		return specificEvent;
+		return currentSpecificEvent;
 	}
 }
