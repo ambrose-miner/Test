@@ -1,6 +1,6 @@
 package com.zumba.bean;
 
-public class event {
+public class Event {
 	
 private int EID;
 private String day;

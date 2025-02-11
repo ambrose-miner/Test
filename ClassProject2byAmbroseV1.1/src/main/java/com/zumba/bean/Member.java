@@ -1,6 +1,6 @@
 package com.zumba.bean;
 
-public class member {
+public class Member {
 	
 	private int MID;
 	private String f_name;

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.zumba.bean.event;
-import com.zumba.service.eventService;
+import com.zumba.bean.Event;
+import com.zumba.service.EventService;
 
 /**
  * Servlet implementation class BatchController
@@ -27,9 +27,9 @@ public class eventController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    eventService bs = new eventService();
+    EventService bs = new EventService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<event> listOfevent = bs.viewAlleventDetails();
+		List<Event> listOfevent = bs.viewAlleventDetails();
 		HttpSession hs = request.getSession();
 		hs.setAttribute("event", listOfevent);
 		response.sendRedirect("viewevent.jsp");

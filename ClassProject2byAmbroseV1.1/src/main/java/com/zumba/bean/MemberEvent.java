@@ -1,6 +1,6 @@
 package com.zumba.bean;
 
-public class memberEvent {
+public class MemberEvent {
 	private int EID;
 	private int MID;
 	private int METotal;
