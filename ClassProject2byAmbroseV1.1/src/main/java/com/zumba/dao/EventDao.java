@@ -52,4 +52,24 @@ public class EventDao {
 	return eventsForMember;
 	}
 	
+	public Event viewSpecificEvent() {
+		Event specificEvent = viewSpecificEvent();
+		try {
+			Connection con = DbConnection.getDbConnection();
+			PreparedStatement pstmt = con.prepareStatement("select from Event where EID = (?)");
+			ResultSet rs3 = pstmt.executeQuery();
+					while(rs3.next()) {
+						Event se = new Event();
+						se.setEID(rs3.getInt("EID"));
+						se.setDay(rs3.getString("day"));
+						se.setTime(rs3.getString("time"));
+						se.setLocation(rs3.getString("location"));
+						specificEvent.add(se);	//Why????	
+					}
+			
+		} catch (Exception e) {
+			System.err.println(e.toString());
+		}
+		return specificEvent;
+	}
 }

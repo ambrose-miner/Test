@@ -17,4 +17,8 @@ public class EventService {
 		public List<Event> viewEventsForMember() {
 			return bd.viewEventsForMember();
 		}
+		
+		public Event viewSpecificEvent() {
+			return bd.viewSpecificEvent();
+		}
 }
