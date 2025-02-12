@@ -21,8 +21,8 @@ public class MemberService {
 			return bd.viewAllmember();	
 		}
 	
-		public List<Member> viewAllMembersInEvent(){
-			return bd.viewMembersInEvent();
+		public List<Member> viewAllMembersInEvent(int EID){
+			return bd.viewMembersInEvent(EID);
 		}
 
 }
