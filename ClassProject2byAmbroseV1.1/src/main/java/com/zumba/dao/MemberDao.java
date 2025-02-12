@@ -32,12 +32,13 @@ public class MemberDao {
 	return listOfmember;
 	}
 	
-	public List<Member> viewMembersInEvent(){
+	public List<Member> viewMembersInEvent(int EID){
 		List<Member> membersInEvent = new ArrayList<Member>();
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from member innerjoin memberEvent on member.MID = memberEvent.MID where EID = (?) "); 
 			ResultSet rs2 = pstmt.executeQuery();
+			pstmt.setInt(0, EID);
 				while(rs2.next()) {
 					
 					Member nm = new Member();

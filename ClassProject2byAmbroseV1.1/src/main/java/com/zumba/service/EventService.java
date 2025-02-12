@@ -14,11 +14,11 @@ public class EventService {
 			return bd.viewAllevent(); 
 		}
 		
-		public List<Event> viewEventsForMember() {
-			return bd.viewEventsForMember();
+		public List<Event> viewEventsForMember(int MID) {
+			return bd.viewEventsForMember(MID);
 		}
 		
-		public Event viewSpecificEvent() {
-			return bd.viewSpecificEvent();
+		public Event viewSpecificEvent(int MID) {
+			return bd.viewSpecificEvent(MID);
 		}
 }

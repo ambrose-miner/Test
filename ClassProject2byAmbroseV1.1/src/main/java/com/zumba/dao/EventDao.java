@@ -30,7 +30,7 @@ public class EventDao {
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
-	return listOfevent;
+		return listOfevent;
 	}
 	
 	public List<Event> viewEventsForMember(int MID) {//add bean here later.
@@ -41,32 +41,32 @@ public class EventDao {
 			pstmt.setInt(0, MID);
 			ResultSet rs2 = pstmt.executeQuery();
 					while(rs2.next()) {
-						Event currentEvents = new Event();
-						currentEvents.setEID(rs2.getInt("EID"));
-						currentEvents.setDay(rs2.getString("day"));
-						currentEvents.setTime(rs2.getString("time"));
-						currentEvents.setLocation(rs2.getString("location"));
-						eventsForMember.add(currentEvents);		
+						Event currentEvent = new Event();
+						currentEvent.setEID(rs2.getInt("EID"));
+						currentEvent.setDay(rs2.getString("day"));
+						currentEvent.setTime(rs2.getString("time"));
+						currentEvent.setLocation(rs2.getString("location"));
+						eventsForMember.add(currentEvent);		
 					}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
-	return eventsForMember;
+		return eventsForMember;
 	}
 	
 	public Event viewSpecificEvent(int EID) {
+		Event currentSpecificEvent = null;
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select from Event where EID = (?)");
 			pstmt.setInt(0, EID);
 			ResultSet rs3 = pstmt.executeQuery();
 					while(rs3.next()) {
-						Event currentSpecificEvent = new Event();
+						currentSpecificEvent = new Event();
 						currentSpecificEvent.setEID(rs3.getInt("EID"));
 						currentSpecificEvent.setDay(rs3.getString("day"));
 						currentSpecificEvent.setTime(rs3.getString("time"));
 						currentSpecificEvent.setLocation(rs3.getString("location"));
-						Event.add(currentSpecificEvent);	//Why????	
 					}
 			
 		} catch (Exception e) {
@@ -75,3 +75,6 @@ public class EventDao {
 		return currentSpecificEvent;
 	}
 }
+
+
+
