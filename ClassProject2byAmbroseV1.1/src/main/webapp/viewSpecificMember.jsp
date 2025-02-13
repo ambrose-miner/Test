@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Members</title>
+<title>Insert title here</title>
 </head>
-<h2>View All Member Details</h2>
+<h2>Selected Member Details</h2>
 
 <table border="1">
 	<tr>

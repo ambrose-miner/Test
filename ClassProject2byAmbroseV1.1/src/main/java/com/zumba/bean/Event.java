@@ -5,17 +5,9 @@ public class Event {
 private int EID;
 private String day;
 private String time;
-public enum amorpm {AM,PM};
 private String location;
-public amorpm AMPM; //changed to public for enum testing.
 
-public amorpm getAMPM() {
-	return AMPM;
-}
 
-public void setAMPM(amorpm aMPM) {
-	AMPM = aMPM;
-}
 
 public int getEID() {
 	return EID;
