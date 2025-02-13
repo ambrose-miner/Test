@@ -14,9 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.zumba.bean.Event;
 import com.zumba.service.EventService;
 
-/**
- * Servlet implementation class BatchController
- */
+
 @WebServlet("/eventController")
 public class eventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,20 +22,17 @@ public class eventController extends HttpServlet {
     
     public eventController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     EventService bs = new EventService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Event> listOfevent = bs.viewAlleventDetails();
+		List<Event> listOfEvent = bs.viewAlleventDetails();
 		HttpSession hs = request.getSession();
-		hs.setAttribute("event", listOfevent);
-		response.sendRedirect("viewevent.jsp");
+		hs.setAttribute("Event", listOfEvent);
+		response.sendRedirect("viewAllEvent.jsp");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

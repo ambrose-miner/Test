@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>View Member</title>
 </head>
+<body>
 <h2>Selected Member Details</h2>
 
 <table border="1">
@@ -16,7 +17,7 @@
 		<th>Last Name</th>
 		<th>Email</th>
 	</tr>
-	<core:forEach items="${sessionScope.member}" var="member">
+	<core:forEach items="${sessionScope.Member}" var="Member">
 		<tr>
 			<td><core:out value="${member.getMID()}"></core:out> </td>
 			<td><core:out value="${member.getf_name()}"></core:out> </td>

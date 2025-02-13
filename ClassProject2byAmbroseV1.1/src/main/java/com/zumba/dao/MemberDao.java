@@ -11,8 +11,8 @@ import com.zumba.resource.DbConnection;
 
 public class MemberDao {
 
-	public List<Member> viewAllmember() {
-		List<Member> listOfmember = new ArrayList<Member>();
+	public List<Member> viewAllMember() {
+		List<Member> listOfMember = new ArrayList<Member>();
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from member");	
@@ -24,12 +24,12 @@ public class MemberDao {
 					nm.setF_name(rs.getString("f_name"));
 					nm.setL_name(rs.getString("l_name"));
 					nm.setEmail(rs.getString("email"));
-					listOfmember.add(nm);
+					listOfMember.add(nm);
 				}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
-	return listOfmember;
+	return listOfMember;
 	}
 	
 	public List<Member> viewMembersInEvent(int EID){

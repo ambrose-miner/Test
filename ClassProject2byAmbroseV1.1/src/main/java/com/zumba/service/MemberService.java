@@ -14,15 +14,15 @@ import com.zumba.resource.DbConnection;
 public class MemberService {
 
 	
-	MemberDao bd = new MemberDao();
+	MemberDao md = new MemberDao();
 
 	
-		public List<Member> viewAllmemberDetails() {
-			return bd.viewAllmember();	
+		public List<Member> viewAllMemberDetails() {
+			return md.viewAllMember();	
 		}
 	
 		public List<Member> viewAllMembersInEvent(int EID){
-			return bd.viewMembersInEvent(EID);
+			return md.viewMembersInEvent(EID);
 		}
 
 }

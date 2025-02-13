@@ -3,7 +3,8 @@ package com.zumba.bean;
 public class MemberEvent {
 	private int EID;
 	private int MID;
-	private int METotal;
+	private int MEID;
+	
 	public int getEID() {
 		return EID;
 	}
@@ -17,10 +18,10 @@ public class MemberEvent {
 		MID = mID;
 	}
 	public int getMETotal() {
-		return METotal;
+		return MEID;
 	}
 	public void setMETotal(int mETotal) {
-		METotal = mETotal;
+		MEID = mETotal;
 	}
 
 }
