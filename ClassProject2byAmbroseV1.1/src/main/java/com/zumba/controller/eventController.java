@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.zumba.bean.Event;
+import com.zumba.bean.Member;
 import com.zumba.service.EventService;
 
 
@@ -34,7 +35,18 @@ public class eventController extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		PrintWriter pw = response.getWriter(); 
+		
+		String day = request.getParameter("day");
+		String time = request.getParameter("time");
+		String location = request.getParameter("location");
+		
+		
+		Event ep = new Event();
+		ep.setDay("day");
+		ep.setTime("time");
+		ep.setLocation("location");
+		
 		doGet(request, response);
 	}
 
