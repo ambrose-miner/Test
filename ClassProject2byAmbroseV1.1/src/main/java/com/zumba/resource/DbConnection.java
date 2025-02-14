@@ -4,14 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DbConnection {
-
+	static String url = "jdbc:mysql://localhost:3306/project2";
+	static String username = "root";
+	static String password = "MySQL$h1t";
 	static Connection con;
 	
 	static {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project2", "root", "MySQL$h1t");
+			con = DriverManager.getConnection(url, username, password );
 			//DB project2 needs to be up dated
 		} catch (Exception e) {
 			System.out.println(e.toString());	

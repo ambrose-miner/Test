@@ -44,9 +44,17 @@ public class memberController extends HttpServlet {
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			PrintWriter pw = response.getWriter(); 
+			
 			String f_name = request.getParameter("f_name");
 			String l_name = request.getParameter("l_name");
 			String email = request.getParameter("email");
+			
+			
+			Member mp = new Member();
+			mp.setL_name("l_name");
+			mp.setF_name("f_name");
+			mp.setEmail("email");
+			
 		
 		doGet(request, response);
 	}

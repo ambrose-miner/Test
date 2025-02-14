@@ -10,7 +10,7 @@
 <body>
 
 <h2>Fill in Member Details</h2>
-<form method = "post"> // some thing I looked up wanted me to put an http:// here that is a ref for the servlet...??? that doesn't seem right.
+<form action = "MemberController" method = "post"> 
 <label>Member First Name</label>
 <input type="text" name="f_name"/><br/>
 <label>Member Last Name</label>
