@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.zumba.bean.Event;
 import com.zumba.bean.Member;
 import com.zumba.service.EventService;
+import com.zumba.service.MemberService;
 
 
 @WebServlet("/eventController")
@@ -24,7 +25,7 @@ public class eventController extends HttpServlet {
     public eventController() {
         super();
     }
-
+    MemberService ms = new MemberService();
     EventService es = new EventService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Event> listOfEvent = es.viewAlleventDetails();
@@ -41,6 +42,8 @@ public class eventController extends HttpServlet {
 			Event ie = es.viewSpecificEvent(EID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("Event", ie);
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
+			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 		}else { 
 			String day = request.getParameter("day");

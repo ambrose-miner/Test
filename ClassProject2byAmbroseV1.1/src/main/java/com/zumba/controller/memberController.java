@@ -35,15 +35,18 @@ public class memberController extends HttpServlet {
 			response.sendRedirect("viewAllMember.jsp");
 			response.getWriter().append("Served at: ").append(request.getContextPath()); //What does this line do???
 			
-			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);//.viewAllMembersInEvent(int EID); // Why does it not like this parameter???
-			hs.setAttribute("Member", listOfMemberInEvent);
-			response.sendRedirect("viewSpecificEvent.jsp"); // do I need to do more to get this to also show the Event details?
+			 // do I need to do more to get this to also show the Event details?
 															// its already getting the EID
 	}
 		
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			PrintWriter pw = response.getWriter(); 
+			int EID = Integer.parseInt(request.getParameter("EID"));
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
+			HttpSession hs = request.getSession();
+			hs.setAttribute("Member", listOfMemberInEvent);
+			response.sendRedirect("viewSpecificEvent.jsp");
+			
 			
 			String f_name = request.getParameter("f_name");
 			String l_name = request.getParameter("l_name");
