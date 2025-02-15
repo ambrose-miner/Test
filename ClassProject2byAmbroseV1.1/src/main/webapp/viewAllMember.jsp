@@ -11,6 +11,7 @@
 
 <table border="1">
 	<tr>
+		<th></th>
 		<th>Member ID</th>
 		<th>First Name</th>
 		<th>Last Name</th>
@@ -18,6 +19,12 @@
 	</tr>
 	<core:forEach items="${sessionScope.member}" var="member">
 		<tr>
+			<td>
+				<form action="MemberController" method="post">
+				<input type=submit value= "View Details">
+				<input type="hidden" name="MID" value="${event.getMID()}">
+				<input type="hidden" name=userAction value=viewSpecificMember></form>
+			</td>
 			<td><core:out value="${member.getMID()}"></core:out> </td>
 			<td><core:out value="${member.getf_name()}"></core:out> </td>
 			<td><core:out value="${member.getl_name()}"></core:out> </td>			

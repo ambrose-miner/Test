@@ -33,10 +33,8 @@ public class memberController extends HttpServlet {
 			HttpSession hs = request.getSession();
 			hs.setAttribute("Member", listOfMember);
 			response.sendRedirect("viewAllMember.jsp");
-			response.getWriter().append("Served at: ").append(request.getContextPath()); //What does this line do???
-			
-			 // do I need to do more to get this to also show the Event details?
-															// its already getting the EID
+			response.getWriter().append("Served at: ").append(request.getContextPath());
+			 
 	}
 		
 	

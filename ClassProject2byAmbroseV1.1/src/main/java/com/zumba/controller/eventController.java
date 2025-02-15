@@ -46,6 +46,7 @@ public class eventController extends HttpServlet {
 			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 		}else { 
+			
 			String day = request.getParameter("day");
 			String time = request.getParameter("time");
 			String location = request.getParameter("location");

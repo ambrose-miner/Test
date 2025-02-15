@@ -27,6 +27,25 @@
 	</core:forEach>
 </table>
 <br/>
+<h2>Member's Events</h2>
+
+<table border = "1">
+	<tr>
+		<th>Event ID</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+	</tr>
+	<core:forEach items="${sessionScope.Event}" var="Event">
+		<tr>
+			<td><core:out value="${event.getEID()}"></core:out> </td>
+			<td><core:out value="${event.getDay()}"></core:out> </td>
+			<td><core:out value="${event.getTime()}"></core:out> </td>
+			<td><core:out value="${event.getLocation()}"></core:out> </td>
+		</tr>
+	</core:forEach>
+
+</table>
 <a href="index.html">Back</a>
 </body>
 </html>
