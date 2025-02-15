@@ -18,7 +18,7 @@ public class EventService {
 			return bd.viewEventsForMember(MID);
 		}
 		
-		public Event viewSpecificEvent(int MID) {
-			return bd.viewSpecificEvent(MID);
+		public Event viewSpecificEvent(int EID) {
+			return bd.viewSpecificEvent(EID);
 		}
 }

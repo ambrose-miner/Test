@@ -12,18 +12,22 @@
 
 <table border="1">
 	<tr>
+		<th></th>
 		<th>event ID</th>
 		<th>Day</th>
 		<th>Time</th>
-
 		<th>Location</th>
+		
 	</tr>
 	<core:forEach items="${sessionScope.event}" var="event">
 		<tr>
+			<td><form action="EventController" method="post">
+			<input type=submit value= "View Details">
+			<input type="hidden" name="EID" value="${event.getEID()}">
+			<input type="hidden" name=userAction value=viewSpecificEvent> </form></td>
 			<td><core:out value="${event.getEID()}"></core:out> </td>
 			<td><core:out value="${event.getDay()}"></core:out> </td>
 			<td><core:out value="${event.getTime()}"></core:out> </td>
-			
 			<td><core:out value="${event.getLocation()}"></core:out> </td>
 		</tr>
 	</core:forEach>

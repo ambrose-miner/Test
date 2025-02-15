@@ -9,15 +9,15 @@
 </head>
 <body>
 
-<h2>Fill in Member Details</h2>
-<form action = "MemberController" method = "post"> 
-<label>Member First Name</label>
-<input type="text" name="f_name"/><br/>
-<label>Member Last Name</label>
-<input type="text" name="l_name"/><br/>
-<label>Member email</label>
-<input type="text" name="email"/><br/>
-</form>
-<a href="index.html">Back</a>
+	<h2>Fill in Member Details</h2>
+	<form action = "MemberController" method = "post"> 
+		<label>Member First Name</label>
+		<input type="text" name="f_name"/><br/>
+		<label>Member Last Name</label>
+		<input type="text" name="l_name"/><br/>
+		<label>Member email</label>
+		<input type="text" name="email"/><br/>
+	</form>
+	<a href="index.html">Back</a>
 </body>
 </html>

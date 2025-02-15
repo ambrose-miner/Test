@@ -25,9 +25,9 @@ public class eventController extends HttpServlet {
         super();
     }
 
-    EventService bs = new EventService();
+    EventService es = new EventService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Event> listOfEvent = bs.viewAlleventDetails();
+		List<Event> listOfEvent = es.viewAlleventDetails();
 		HttpSession hs = request.getSession();
 		hs.setAttribute("Event", listOfEvent);
 		response.sendRedirect("viewAllEvent.jsp");
@@ -35,18 +35,24 @@ public class eventController extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter pw = response.getWriter(); 
-		
-		String day = request.getParameter("day");
-		String time = request.getParameter("time");
-		String location = request.getParameter("location");
-		
-		
-		Event ep = new Event();
-		ep.setDay("day");
-		ep.setTime("time");
-		ep.setLocation("location");
-		
+		String userAction = request.getParameter("userAction");
+		if (userAction == "viewSpecificEvent") {			//test == vs .=
+			int EID = Integer.parseInt(request.getParameter("EID")); // will this need a throws exception or try catch??
+			Event ie = es.viewSpecificEvent(EID);
+			HttpSession hs = request.getSession();
+			hs.setAttribute("Event", ie);
+			response.sendRedirect("viewSpecificEvent.jsp");
+		}else { 
+			String day = request.getParameter("day");
+			String time = request.getParameter("time");
+			String location = request.getParameter("location");
+			
+			
+			Event ep = new Event();
+			ep.setDay("day");
+			ep.setTime("time");
+			ep.setLocation("location");
+		}
 		doGet(request, response);
 	}
 

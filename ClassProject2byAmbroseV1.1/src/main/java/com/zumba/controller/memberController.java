@@ -35,7 +35,7 @@ public class memberController extends HttpServlet {
 			response.sendRedirect("viewAllMember.jsp");
 			response.getWriter().append("Served at: ").append(request.getContextPath()); //What does this line do???
 			
-			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(int EID); // Why does it not like this parameter???
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);//.viewAllMembersInEvent(int EID); // Why does it not like this parameter???
 			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp"); // do I need to do more to get this to also show the Event details?
 															// its already getting the EID
