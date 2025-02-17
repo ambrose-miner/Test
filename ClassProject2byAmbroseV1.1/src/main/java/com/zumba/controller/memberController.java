@@ -61,6 +61,6 @@ public class memberController extends HttpServlet {
 			
 		
 		doGet(request, response);
-	}
-
+			}
+		}
 }
