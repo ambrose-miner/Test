@@ -62,12 +62,12 @@ public class MemberDao {
 			PreparedStatement pstmt = con.prepareStatement("select from Member where MID = (?)");
 			pstmt.setInt(0, MID);
 			ResultSet rs3 = pstmt.executeQuery();
-					while(rs3.next()) {
-						currentSpecificMember = new Member();
-						currentSpecificMember.setMID(rs3.getInt("MID"));
-						currentSpecificMember.setF_name(rs3.getString("f_name"));
-						currentSpecificMember.setL_name(rs3.getString("l_name"));
-						currentSpecificMember.setEmail(rs3.getString("email"));
+				while(rs3.next()) {
+					currentSpecificMember = new Member();
+					currentSpecificMember.setMID(rs3.getInt("MID"));
+					currentSpecificMember.setF_name(rs3.getString("f_name"));
+					currentSpecificMember.setL_name(rs3.getString("l_name"));
+					currentSpecificMember.setEmail(rs3.getString("email"));
 					}
 			
 		} catch (Exception e) {
@@ -75,7 +75,8 @@ public class MemberDao {
 		}
 	return currentSpecificMember;
 	}
-public void addNewMember(Member Member) {
+	
+	public void addNewMember(Member Member) {
 		
 		try {
 			Connection con = DbConnection.getDbConnection();
@@ -89,4 +90,5 @@ public void addNewMember(Member Member) {
 		}catch (Exception e) {
 			System.err.println(e.toString());
 		}
+	}
 }

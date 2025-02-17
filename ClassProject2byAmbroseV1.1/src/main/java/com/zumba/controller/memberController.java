@@ -39,7 +39,7 @@ public class memberController extends HttpServlet {
 		
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+			String userAction = request.getParameter("userAction");
 			int EID = Integer.parseInt(request.getParameter("EID"));
 			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
 			HttpSession hs = request.getSession();
