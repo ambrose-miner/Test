@@ -46,16 +46,21 @@ public class eventController extends HttpServlet {
 			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 		}else { 
-			
+		if (userAction == "addEvent") {
+			HttpSession hs = request.getSession();
+			hs.setAttribute("Event", es);
+		
 			String day = request.getParameter("day");
 			String time = request.getParameter("time");
 			String location = request.getParameter("location");
 			
+			Event ne = new Event();
+			ne.setDay("day");
+			ne.setTime("time");
+			ne.setLocation("location");
+		}else {
 			
-			Event ep = new Event();
-			ep.setDay("day");
-			ep.setTime("time");
-			ep.setLocation("location");
+			}
 		}
 		doGet(request, response);
 	}

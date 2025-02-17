@@ -39,22 +39,25 @@ public class memberController extends HttpServlet {
 		
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
 			int EID = Integer.parseInt(request.getParameter("EID"));
 			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 			
+			if  (userAction == "addMember") {
+				hs.setAttribute("Member", ms);
 			
-			String f_name = request.getParameter("f_name");
-			String l_name = request.getParameter("l_name");
-			String email = request.getParameter("email");
-			
-			
-			Member mp = new Member();
-			mp.setL_name("l_name");
-			mp.setF_name("f_name");
-			mp.setEmail("email");
+				String day = request.getParameter("f_name");
+				String time = request.getParameter("l_name");
+				String location = request.getParameter("email");
+				
+				Member ne = new Member();
+				ne.setF_name("f_name");
+				ne.setL_name("l_name");
+				ne.setEmail("email");
+			}else {
 			
 		
 		doGet(request, response);

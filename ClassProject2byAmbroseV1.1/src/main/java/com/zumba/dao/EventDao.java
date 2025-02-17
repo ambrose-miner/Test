@@ -75,8 +75,8 @@ public class EventDao {
 		}
 		return currentSpecificEvent;
 	}
-	public void addNewEvent(Event Event) {
-		
+	
+	public Event addNewEvent(Event Event) {	
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("insert into Event(day, time, location) values (?,?,?)");
