@@ -22,7 +22,7 @@ public class EventService {
 			return ed.viewSpecificEvent(EID);
 		}
 		
-		public Event addNewEvent(Event Event) {
-			return ed.addNewEvent(Event);
+		public void addNewEvent(Event event) {
+			ed.addNewEvent(event);
 		}
 }

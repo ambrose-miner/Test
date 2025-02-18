@@ -76,15 +76,15 @@ public class EventDao {
 		return currentSpecificEvent;
 	}
 	
-	public Event addNewEvent(Event Event) {	
+	public void addNewEvent(Event newEvent) {	
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("insert into Event(day, time, location) values (?,?,?)");
-			ResultSet rs4 = pstmt.executeUpdate(); //"Type mismatch: cannot convert from int to ResultSet" Didn't this get fixed before??
-			Event newEvent = new Event();
-			newEvent.setDay(rs4.getString("day"));
-			newEvent.setTime(rs4.getString("time"));
-			newEvent.setLocation(rs4.getString("location"));
+			pstmt.setString(0, newEvent.getDay());
+			pstmt.setString(1, newEvent.getTime());
+			pstmt.setString(2, newEvent.getLocation());
+			int intResult = pstmt.executeUpdate(); 
+			System.out.println("Event Dao addNewEvent" +intResult);
 			
 		}catch (Exception e) {
 			System.err.println(e.toString());

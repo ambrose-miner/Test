@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zumba.bean.Event;
 import com.zumba.bean.Member;
 import com.zumba.bean.MemberEvent;
 import com.zumba.dao.MemberDao;
@@ -24,5 +25,7 @@ public class MemberService {
 		public List<Member> viewAllMembersInEvent(int EID){
 			return md.viewMembersInEvent(EID);
 		}
-
+		public void addNewMember(Member member) {
+			md.addNewMember(member);
+		}
 }

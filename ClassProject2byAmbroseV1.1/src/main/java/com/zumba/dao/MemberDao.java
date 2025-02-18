@@ -26,7 +26,8 @@ public class MemberDao {
 					nm.setL_name(rs1.getString("l_name"));
 					nm.setEmail(rs1.getString("email"));
 					listOfMember.add(nm);
-				}
+					}
+				
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -47,9 +48,9 @@ public class MemberDao {
 					nm.setF_name(rs2.getString("f_name"));
 					nm.setL_name(rs2.getString("l_name"));
 					nm.setEmail(rs2.getString("email"));
-					membersInEvent.add(nm);
-					
-				}
+					membersInEvent.add(nm);		
+					}
+				
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -63,6 +64,7 @@ public class MemberDao {
 			pstmt.setInt(0, MID);
 			ResultSet rs3 = pstmt.executeQuery();
 				while(rs3.next()) {
+					
 					currentSpecificMember = new Member();
 					currentSpecificMember.setMID(rs3.getInt("MID"));
 					currentSpecificMember.setF_name(rs3.getString("f_name"));
@@ -76,19 +78,18 @@ public class MemberDao {
 	return currentSpecificMember;
 	}
 	
-	public void addNewMember(Member Member) {
-		
+	public void addNewMember(Member newMember) {
 		try {
-			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("insert into member (f_name, l_name, email) values (?,?,?)");
-			ResultSet rs4 = pstmt.executeUpdate(); //"Type mismatch: cannot convert from int to ResultSet" Didn't this get fixed before??
-			Member newMember = new Member();
-			newMember.setF_name(rs4.getString("f_name"));
-			newMember.setL_name(rs4.getString("l_name"));
-			newMember.setEmail(rs4.getString("email"));
-			
-		}catch (Exception e) {
-			System.err.println(e.toString());
+				Connection con = DbConnection.getDbConnection();
+				PreparedStatement pstmt = con.prepareStatement("insert into Member(f_name, L_name, email) values (?,?,?)");
+				pstmt.setString(0, newMember.getF_name());
+				pstmt.setString(1, newMember.getL_name());
+				pstmt.setString(2, newMember.getEmail());
+				int intResult = pstmt.executeUpdate(); 
+				System.out.println("Member Dao addNewEvent" +intResult);
+				
+			}catch (Exception e) {
+				System.err.println(e.toString());
 		}
 	}
 }
