@@ -40,23 +40,27 @@ public class memberController extends HttpServlet {
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String userAction = request.getParameter("userAction");
-			int EID = Integer.parseInt(request.getParameter("EID"));
-			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
+			int MID = Integer.parseInt(request.getParameter("MID"));
+			Member ie = ms.viewSpecificMember(MID);
 			HttpSession hs = request.getSession();
-			hs.setAttribute("Member", listOfMemberInEvent);
-			response.sendRedirect("viewSpecificEvent.jsp");
+			hs.setAttribute("Event", ie);
+			List<Event> listOfEventForMember = ms.viewSpecificMember(MID);
+			HttpSession hs = request.getSession();
+			hs.setAttribute("Member", listOfEventForMember);
+			response.sendRedirect("viewSpecificMember.jsp");
 			
 			if  (userAction == "addMember") {
-				hs.setAttribute("Member", ms);
-			
-				String day = request.getParameter("f_name");
-				String time = request.getParameter("l_name");
-				String location = request.getParameter("email");
 				
-				Member ne = new Member();
-				ne.setF_name("f_name");
-				ne.setL_name("l_name");
-				ne.setEmail("email");
+			
+				String memberF_name = request.getParameter("f_name");
+				String memberL_name = request.getParameter("l_name");
+				String memberEmail = request.getParameter("email");
+				
+				Member nm = new Member();
+				nm.setF_name(memberF_name);
+				nm.setL_name(memberL_name);
+				nm.setEmail(memberEmail);
+				ms.addNewMember(nm);
 			}else {
 			
 		

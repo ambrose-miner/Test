@@ -20,13 +20,13 @@ public class EventDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-						Event currentEvent = new Event();
-						currentEvent.setEID(rs.getInt("EID"));
-						currentEvent.setDay(rs.getString("day"));
-						currentEvent.setTime(rs.getString("time"));
-						currentEvent.setLocation(rs.getString("location"));
-						listOfevent.add(currentEvent);		
-						}
+				Event currentEvent = new Event();
+				currentEvent.setEID(rs.getInt("EID"));
+				currentEvent.setDay(rs.getString("day"));
+				currentEvent.setTime(rs.getString("time"));
+				currentEvent.setLocation(rs.getString("location"));
+				listOfevent.add(currentEvent);		
+				}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -42,13 +42,13 @@ public class EventDao {
 			ResultSet rs2 = pstmt.executeQuery();
 			
 			while(rs2.next()) {
-						Event currentEvent = new Event();
-						currentEvent.setEID(rs2.getInt("EID"));
-						currentEvent.setDay(rs2.getString("day"));
-						currentEvent.setTime(rs2.getString("time"));
-						currentEvent.setLocation(rs2.getString("location"));
-						eventsForMember.add(currentEvent);		
-						}
+				Event currentEvent = new Event();
+				currentEvent.setEID(rs2.getInt("EID"));
+				currentEvent.setDay(rs2.getString("day"));
+				currentEvent.setTime(rs2.getString("time"));
+				currentEvent.setLocation(rs2.getString("location"));
+				eventsForMember.add(currentEvent);		
+				}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -64,12 +64,12 @@ public class EventDao {
 			ResultSet rs3 = pstmt.executeQuery();
 			
 			while(rs3.next()) {
-						currentSpecificEvent = new Event();
-						currentSpecificEvent.setEID(rs3.getInt("EID"));
-						currentSpecificEvent.setDay(rs3.getString("day"));
-						currentSpecificEvent.setTime(rs3.getString("time"));
-						currentSpecificEvent.setLocation(rs3.getString("location"));
-						}
+				currentSpecificEvent = new Event();
+				currentSpecificEvent.setEID(rs3.getInt("EID"));
+				currentSpecificEvent.setDay(rs3.getString("day"));
+				currentSpecificEvent.setTime(rs3.getString("time"));
+				currentSpecificEvent.setLocation(rs3.getString("location"));
+				}
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -84,7 +84,7 @@ public class EventDao {
 			pstmt.setString(1, newEvent.getTime());
 			pstmt.setString(2, newEvent.getLocation());
 			int intResult = pstmt.executeUpdate(); 
-			System.out.println("Event Dao addNewEvent" +intResult);
+			System.out.println("Event Dao addNewEvent=" +intResult);
 			
 		}catch (Exception e) {
 			System.err.println(e.toString());

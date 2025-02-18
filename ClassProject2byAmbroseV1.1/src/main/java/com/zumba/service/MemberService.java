@@ -28,4 +28,7 @@ public class MemberService {
 		public void addNewMember(Member member) {
 			md.addNewMember(member);
 		}
+		public Member viewSpecificMember(int MID) {
+		 	return md.viewSpecificMember(MID);
+		}
 }
