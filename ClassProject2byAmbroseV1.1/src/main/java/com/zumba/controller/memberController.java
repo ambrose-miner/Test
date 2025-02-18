@@ -14,7 +14,7 @@ import com.zumba.bean.MemberEvent;
 import com.zumba.bean.Member;
 import com.zumba.bean.Event;
 import com.zumba.service.MemberService;
-
+import com.zumba.service.EventService;
 
 @WebServlet("/memberController")
 public class memberController extends HttpServlet {
@@ -27,7 +27,7 @@ public class memberController extends HttpServlet {
     
 	
 		MemberService ms = new MemberService();
-		
+		EventService es = new EventService();
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<Member> listOfMember = ms.viewAllMemberDetails();
 			HttpSession hs = request.getSession();
@@ -44,8 +44,7 @@ public class memberController extends HttpServlet {
 			Member ie = ms.viewSpecificMember(MID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("Event", ie);
-			List<Event> listOfEventForMember = ms.viewSpecificMember(MID);
-			HttpSession hs = request.getSession();
+			List<Event> listOfEventForMember = es.viewEventsForMember(MID);
 			hs.setAttribute("Member", listOfEventForMember);
 			response.sendRedirect("viewSpecificMember.jsp");
 			
