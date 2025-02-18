@@ -17,9 +17,8 @@ public class MemberDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from member");	
-			ResultSet rs1 = pstmt.executeQuery();		
-				while(rs1.next()) {
-				
+			ResultSet rs1 = pstmt.executeQuery();
+			while(rs1.next()) {
 					Member nm = new Member();
 					nm.setMID(rs1.getInt("MID"));
 					nm.setF_name(rs1.getString("f_name"));
@@ -27,7 +26,6 @@ public class MemberDao {
 					nm.setEmail(rs1.getString("email"));
 					listOfMember.add(nm);
 					}
-				
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -38,19 +36,17 @@ public class MemberDao {
 		List<Member> membersInEvent = new ArrayList<Member>();
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("select * from member innerjoin memberEvent on member.MID = memberEvent.MID where EID = (?) "); 
-			ResultSet rs2 = pstmt.executeQuery();
+			PreparedStatement pstmt = con.prepareStatement("select * from member innerjoin memberEvent on member.MID = memberEvent.MID where EID = (?) ");
 			pstmt.setInt(0, EID);
-				while(rs2.next()) {
-					
+			ResultSet rs2 = pstmt.executeQuery();
+			while(rs2.next()) {				
 					Member nm = new Member();
 					nm.setMID(rs2.getInt("MID"));
 					nm.setF_name(rs2.getString("f_name"));
 					nm.setL_name(rs2.getString("l_name"));
 					nm.setEmail(rs2.getString("email"));
 					membersInEvent.add(nm);		
-					}
-				
+					}			
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -63,15 +59,13 @@ public class MemberDao {
 			PreparedStatement pstmt = con.prepareStatement("select from Member where MID = (?)");
 			pstmt.setInt(0, MID);
 			ResultSet rs3 = pstmt.executeQuery();
-				while(rs3.next()) {
-					
+			while(rs3.next()) {
 					currentSpecificMember = new Member();
 					currentSpecificMember.setMID(rs3.getInt("MID"));
 					currentSpecificMember.setF_name(rs3.getString("f_name"));
 					currentSpecificMember.setL_name(rs3.getString("l_name"));
 					currentSpecificMember.setEmail(rs3.getString("email"));
-					}
-			
+					}		
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
