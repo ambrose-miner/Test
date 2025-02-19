@@ -8,6 +8,12 @@
 <title>View Member</title>
 </head>
 <body>
+	<form action = "memberController" method = "get"> 
+			<input type=submit value= "View Member">
+			<label>Enter Member ID</label>
+			<input type= "int" name="MID"/><br/>
+			<input type="hidden" name=userAction value=viewSpecificMember>
+	</form>
 <h2>Selected Member Details</h2>
 
 <table border="1">
@@ -20,9 +26,9 @@
 	<core:forEach items="${sessionScope.Member}" var="Member">
 		<tr>
 			<td><core:out value="${member.getMID()}"></core:out> </td>
-			<td><core:out value="${member.getf_name()}"></core:out> </td>
-			<td><core:out value="${member.getl_name()}"></core:out> </td>			
-			<td><core:out value="${member.getemail()}"></core:out> </td>
+			<td><core:out value="${member.getF_name()}"></core:out> </td>
+			<td><core:out value="${member.getL_name()}"></core:out> </td>			
+			<td><core:out value="${member.getEmail()}"></core:out> </td>
 		</tr>
 	</core:forEach>
 </table>
@@ -46,6 +52,6 @@
 	</core:forEach>
 
 </table>
-<a href="index.html">Back</a>
+<a href="index.jsp">Back</a>
 </body>
 </html>

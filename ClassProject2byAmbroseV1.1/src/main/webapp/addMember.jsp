@@ -10,14 +10,17 @@
 <body>
 
 	<h2>Fill in Member Details</h2>
-	<form action = "MemberController" method = "post"> 
+	<form action = "memberController" method = "post"> 
+		<input type=submit value= "Create new Member">
+		<input type="hidden" name=userAction value=addMember>
 		<label>Member First Name</label>
-		<input type="text" name="f_name"/><br/>
+		<input type="text" name="F_name"/><br/>
 		<label>Member Last Name</label>
-		<input type="text" name="l_name"/><br/>
+		<input type="text" name="L_name"/><br/>
 		<label>Member email</label>
-		<input type="text" name="email"/><br/>
+		<input type="text" name="Email"/><br/>
 	</form>
-	<a href="index.html">Back</a>
+	<a href="viewAllMember.jsp">View Members</a>
+	<a href="index.jsp">Back</a>
 </body>
 </html>

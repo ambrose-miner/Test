@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/memberEventController")
-public class memberEventController extends HttpServlet {
+public class MemberEventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public memberEventController() {
+    public MemberEventController() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -16,29 +16,29 @@ import com.zumba.bean.Member;
 import com.zumba.service.EventService;
 import com.zumba.service.MemberService;
 
-//TODO:rename with capitals
+
 @WebServlet("/eventController")
-public class eventController extends HttpServlet {
+public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public eventController() {
+    public EventController() {
         super();
     }
     MemberService ms = new MemberService();
     EventService es = new EventService();
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		List<Event> listOfEvent = es.viewAlleventDetails();
 		HttpSession hs = request.getSession();
 		hs.setAttribute("Event", listOfEvent);
 		response.sendRedirect("viewAllEvent.jsp");
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userAction = request.getParameter("userAction");
-		if 
-			(userAction == "viewSpecificEvent") {			//test == vs .=
+		if (userAction .equals("viewSpecificEvent")) {	
+	
 			int EID = Integer.parseInt(request.getParameter("EID")); // will this need a throws exception or try catch??
 			Event ie = es.viewSpecificEvent(EID);
 			HttpSession hs = request.getSession();
@@ -46,9 +46,8 @@ public class eventController extends HttpServlet {
 			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
 			hs.setAttribute("Member", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
-		}else if
-			(userAction == "addEvent") {
 			
+		}else if (userAction .equals("addEvent")) {
 			
 			String eventDay = request.getParameter("day");
 			String eventTime = request.getParameter("time");

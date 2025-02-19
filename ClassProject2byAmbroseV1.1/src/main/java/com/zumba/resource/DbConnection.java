@@ -14,7 +14,7 @@ public class DbConnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, username, password );
-			//DB project2 needs to be up dated
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());	
 		}

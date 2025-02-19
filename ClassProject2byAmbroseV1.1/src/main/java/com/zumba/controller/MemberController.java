@@ -17,17 +17,18 @@ import com.zumba.service.MemberService;
 import com.zumba.service.EventService;
 
 @WebServlet("/memberController")
-public class memberController extends HttpServlet {
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public memberController() {
+    public MemberController() {
         super();
     }
     
 	
 		MemberService ms = new MemberService();
 		EventService es = new EventService();
+		
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<Member> listOfMember = ms.viewAllMemberDetails();
 			HttpSession hs = request.getSession();
@@ -40,15 +41,17 @@ public class memberController extends HttpServlet {
 	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String userAction = request.getParameter("userAction");
+			if (userAction .equals("viewSpecificMember")) {
+				
 			int MID = Integer.parseInt(request.getParameter("MID"));
-			Member ie = ms.viewSpecificMember(MID);
+			Member im = ms.viewSpecificMember(MID);
 			HttpSession hs = request.getSession();
-			hs.setAttribute("Event", ie);
+			hs.setAttribute("Member", im);
 			List<Event> listOfEventForMember = es.viewEventsForMember(MID);
-			hs.setAttribute("Member", listOfEventForMember);
+			hs.setAttribute("Event", listOfEventForMember);
 			response.sendRedirect("viewSpecificMember.jsp");
 			
-			if  (userAction == "addMember") {
+			}else if  (userAction .equals("addMember")) {
 				
 			
 				String memberF_name = request.getParameter("f_name");
@@ -60,10 +63,12 @@ public class memberController extends HttpServlet {
 				nm.setL_name(memberL_name);
 				nm.setEmail(memberEmail);
 				ms.addNewMember(nm);
+				
+				doGet(request, response);
 			}else {
 			
 		
-		doGet(request, response);
+			doGet(request, response);
 			}
 		}
 }

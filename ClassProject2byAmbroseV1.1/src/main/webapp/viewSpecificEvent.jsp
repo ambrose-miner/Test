@@ -8,9 +8,15 @@
 <title>View Event</title>
 </head>
 <body>
-<h2>Selected Event Details</h2>
+	<form action = "eventController" method = "get"> 
+			<input type=submit value= "View Event">
+			<label>Enter Event ID</label>
+			<input type="int" name="EID"/><br/>
+			<input type="hidden" name=userAction value=viewSpecificEvent>
+	</form>
+	<h2>Selected Event Details</h2>
 
-<table border = "1">
+	<table border = "1">
 	<tr>
 		<th>Event ID</th>
 		<th>Day</th>
@@ -44,7 +50,7 @@
 			<td><core:out value="${member.getemail()}"></core:out> </td>
 		</tr>
 	</core:forEach>
-
 </table>
+<a href="index.jsp">Back</a>
 </body>
 </html>
