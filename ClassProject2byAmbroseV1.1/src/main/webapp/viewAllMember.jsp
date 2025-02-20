@@ -20,15 +20,16 @@
 	<core:forEach items="${sessionScope.Member}" var="member">
 		<tr>
 			<td>
-				<form action="memberController" method="post">
+				<form action="memberController" method="get">
 				<input type=submit value= "View Details">
 				<input type="hidden" name="MID" value="${member.getMID()}">
-				<input type="hidden" name=userAction value=viewSpecificMember></form>
+				<input type="hidden" name=userAction value=viewSpecificMember>
+				</form>
 			</td>
 			<td><core:out value="${member.getMID()}"></core:out> </td>
 			<td><core:out value="${member.getF_name()}"></core:out> </td>
 			<td><core:out value="${member.getL_name()}"></core:out> </td>			
-			<td><core:out value="${member.getemail()}"></core:out> </td>
+			<td><core:out value="${member.getEmail()}"></core:out> </td>
 		</tr>
 	</core:forEach>
 </table>
