@@ -19,13 +19,13 @@
 		<th>Location</th>
 		
 	</tr>
-	<core:forEach items="${sessionScope.event}" var="event">
+	<core:forEach items="${sessionScope.listEvent}" var="event">
 		<tr>
 			<td>
-				<form action="eventController" method="get">
-				<input type=submit value= "View Details">
-				<input type="hidden" name="EID" value="${event.getEID()}">
-				<input type="hidden" name=userAction value=viewSpecificEvent>
+				<form action="EventController" method="get">
+				<input type=submit value= "View Details"/>
+				<input type="hidden" name="EID" value="${event.getEID()}"/>
+				<input type="hidden" name=userAction value=viewSpecificEvent/>
 				</form>
 			</td>
 			<td><core:out value="${event.getEID()}"></core:out> </td>

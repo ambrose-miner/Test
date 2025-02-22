@@ -16,7 +16,7 @@ public class EventDao {
 		List<Event> listOfevent = new ArrayList<Event>();
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("select * from event");
+			PreparedStatement pstmt = con.prepareStatement("select * from Event");
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

@@ -11,14 +11,14 @@
 
 	<h2>Fill in Member Details</h2>
 	<form action = "memberController" method = "post"> 
-		<input type="hidden" name=userAction value=addMember>
+		<input type="hidden" name=userAction value=addMember/>
 		<label>Member First Name</label>
 		<input type="text" name="F_name"/><br/>
 		<label>Member Last Name</label>
 		<input type="text" name="L_name"/><br/>
 		<label>Member email</label>
 		<input type="text" name="Email"/><br/>
-		<input type=submit value= "Create new Member">
+		<input type=submit value= "Create new Member"/>
 	</form>
 	<a href="viewAllMember.jsp">View Members</a>
 	<a href="index.jsp">Back</a>

@@ -26,13 +26,13 @@ public class MemberController extends HttpServlet {
     }
     
 	
-		MemberService ms = new MemberService();
-		EventService es = new EventService();
+		private MemberService ms = new MemberService();
+		private EventService es = new EventService();
 		
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<Member> listOfMember = ms.viewAllMemberDetails();
 			HttpSession hs = request.getSession();
-			hs.setAttribute("Member", listOfMember);
+			hs.setAttribute("listAllMember", listOfMember);
 			response.sendRedirect("viewAllMember.jsp");
 			response.getWriter().append("Served at: ").append(request.getContextPath());
 			 
@@ -48,7 +48,7 @@ public class MemberController extends HttpServlet {
 			HttpSession hs = request.getSession();
 			hs.setAttribute("Member", im);
 			List<Event> listOfEventForMember = es.viewEventsForMember(MID);
-			hs.setAttribute("Event", listOfEventForMember);
+			hs.setAttribute("listOfEvent", listOfEventForMember);
 			response.sendRedirect("viewSpecificMember.jsp");
 			
 			}else if  (userAction .equals("addMember")) {

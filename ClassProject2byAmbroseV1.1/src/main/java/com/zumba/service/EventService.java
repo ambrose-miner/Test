@@ -7,22 +7,22 @@ import com.zumba.dao.EventDao;
 
 public class EventService {
 
-	EventDao ed = new EventDao();
+// private EventDao ed = new EventDao();
 	
 	
-		public List<Event> viewAlleventDetails() {
+		public List<Event> viewAlleventDetails() {EventDao ed = new EventDao();
 			return ed.viewAllevent(); 
 		}
 		
-		public List<Event> viewEventsForMember(int MID) {
+		public List<Event> viewEventsForMember(int MID) {EventDao ed = new EventDao();
 			return ed.viewEventsForMember(MID);
 		}
 		
-		public Event viewSpecificEvent(int EID) {
+		public Event viewSpecificEvent(int EID) {EventDao ed = new EventDao();
 			return ed.viewSpecificEvent(EID);
 		}
 		
-		public void addNewEvent(Event event) {
+		public void addNewEvent(Event event) {EventDao ed = new EventDao();
 			ed.addNewEvent(event);
 		}
 }

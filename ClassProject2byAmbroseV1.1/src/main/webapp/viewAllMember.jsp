@@ -17,13 +17,13 @@
 		<th>Last Name</th>
 		<th>Email</th>
 	</tr>
-	<core:forEach items="${sessionScope.Member}" var="member">
+	<core:forEach items="${sessionScope.listAllMember}" var="member">
 		<tr>
 			<td>
 				<form action="memberController" method="get">
-				<input type=submit value= "View Details">
-				<input type="hidden" name="MID" value="${member.getMID()}">
-				<input type="hidden" name=userAction value=viewSpecificMember>
+				<input type=submit value= "View Details"/>
+				<input type="hidden" name="MID" value="${member.getMID()}"/>
+				<input type="hidden" name=userAction value=viewSpecificMember/>
 				</form>
 			</td>
 			<td><core:out value="${member.getMID()}"></core:out> </td>

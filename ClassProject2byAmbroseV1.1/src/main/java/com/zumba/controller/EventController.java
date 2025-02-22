@@ -20,18 +20,22 @@ import com.zumba.service.MemberService;
 @WebServlet("/eventController")
 public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	private	MemberService ms;// = new MemberService();
+	private    EventService es;// = new EventService();
+	
     public EventController() {
         super();
+         ms = new MemberService();
+         es = new EventService();
     }
-    MemberService ms = new MemberService();
-    EventService es = new EventService();
+   
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Event> listOfEvent = es.viewAlleventDetails();
 		HttpSession hs = request.getSession();
-		hs.setAttribute("Event", listOfEvent);
+		hs.setAttribute("listAllEvent", listOfEvent);
 		response.sendRedirect("viewAllEvent.jsp");
 	}
 
@@ -42,9 +46,9 @@ public class EventController extends HttpServlet {
 			int EID = Integer.parseInt(request.getParameter("EID")); // will this need a throws exception or try catch??
 			Event ie = es.viewSpecificEvent(EID);
 			HttpSession hs = request.getSession();
-			hs.setAttribute("Event", ie);
+			hs.setAttribute("specificEvent", ie);
 			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
-			hs.setAttribute("Member", listOfMemberInEvent);
+			hs.setAttribute("listOfMember", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 			
 		}else if (userAction .equals("addEvent")) {

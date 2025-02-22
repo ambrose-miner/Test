@@ -162,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="loginServletWithJDBC" path="/loginServletWithJDBC" reloadable="true" source="org.eclipse.jst.jee.server:loginServletWithJDBC"/><Context docBase="pussInBoots" path="/pussInBoots" reloadable="true" source="org.eclipse.jst.jee.server:pussInBoots"/><Context docBase="JSPApplication" path="/JSPApplication" reloadable="true" source="org.eclipse.jst.jee.server:JSPApplication"/><Context docBase="JSPLogin" path="/JSPLogin" reloadable="true" source="org.eclipse.jst.jee.server:JSPLogin"/><Context docBase="LoginMVCApp" path="/LoginMVCApp" reloadable="true" source="org.eclipse.jst.jee.server:LoginMVCApp"/><Context docBase="SessionTracking" path="/SessionTracking" reloadable="true" source="org.eclipse.jst.jee.server:SessionTracking"/><Context docBase="ScopeObjects" path="/ScopeObjects" reloadable="true" source="org.eclipse.jst.jee.server:ScopeObjects"/><Context docBase="JstlExamples" path="/JstlExamples" reloadable="true" source="org.eclipse.jst.jee.server:JstlExamples"/><Context docBase="ClassProject2byAmbroseV1.1" path="/ClassProject2byAmbroseV1.1" reloadable="true" source="org.eclipse.jst.jee.server:ClassProject2byAmbroseV1.1"/></Host>
+      <Context docBase="ClassProject2byAmbroseV1.1" path="/ClassProject2byAmbroseV1.1" reloadable="true" source="org.eclipse.jst.jee.server:ClassProject2byAmbroseV1.1"/></Host>
     </Engine>
   </Service>
 </Server>

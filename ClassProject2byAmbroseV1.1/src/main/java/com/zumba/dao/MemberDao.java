@@ -78,7 +78,7 @@ public class MemberDao {
 	public void addNewMember(Member newMember) {
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("insert into Member(f_name, L_name, email) values (?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into Member(f_name, l_name, email) values (?,?,?)");
 			pstmt.setString(0, newMember.getF_name());
 			pstmt.setString(1, newMember.getL_name());
 			pstmt.setString(2, newMember.getEmail());

@@ -8,11 +8,11 @@
 <title>View Event</title>
 </head>
 <body>
-	<form action = "eventController" method = "get"> 
-			<input type=submit value= "View Event">
+	<form action = "EventController" method = "post"> 
+			<input type=submit value= "View Event"/>
 			<label>Enter Event ID</label>
 			<input type="number" name="EID"/><br/>
-			<input type="hidden" name=userAction value=viewSpecificEvent>
+			<input type="hidden" name=userAction value=viewSpecificEvent/>
 	</form>
 	<h2>Selected Event Details</h2>
 
@@ -23,14 +23,12 @@
 		<th>Location</th>
 		<th>Time</th>
 	</tr>
-	<core:forEach items="${sessionScope.Event}" var="Event">
 		<tr>
-			<td><core:out value="${event.getEID()}"></core:out> </td>
-			<td><core:out value="${event.getDay()}"></core:out> </td>
-			<td><core:out value="${event.getLocation()}"></core:out> </td>			
-			<td><core:out value="${event.getTime()}"></core:out> </td>
+			<td><core:out value="${sessionScope.specificEvent.getEID()}"></core:out> </td>
+			<td><core:out value="${sessionScope.specificEvent.getDay()}"></core:out> </td>
+			<td><core:out value="${sessionScope.specificEvent.getLocation()}"></core:out> </td>			
+			<td><core:out value="${sessionScope.specificEvent.getTime()}"></core:out> </td>
 		</tr>
-	</core:forEach>
 </table>
 <br/>
 <h2>Members In Selected Event</h2>
@@ -42,12 +40,12 @@
 		<th>Last Name</th>
 		<th>Email</th>
 	</tr>
-	<core:forEach items="${sessionScope.Member}" var="Member">
+	<core:forEach items="${sessionScope.listOfMember}" var="member">
 		<tr>
 			<td><core:out value="${member.getMID()}"></core:out> </td>
-			<td><core:out value="${member.getf_name()}"></core:out> </td>
-			<td><core:out value="${member.getl_name()}"></core:out> </td>			
-			<td><core:out value="${member.getemail()}"></core:out> </td>
+			<td><core:out value="${member.getF_name()}"></core:out> </td>
+			<td><core:out value="${member.getL_name()}"></core:out> </td>			
+			<td><core:out value="${member.getEmail()}"></core:out> </td>
 		</tr>
 	</core:forEach>
 </table>
