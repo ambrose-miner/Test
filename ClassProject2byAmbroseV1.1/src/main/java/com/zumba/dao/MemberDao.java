@@ -38,7 +38,7 @@ public class MemberDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from member innerjoin memberEvent on member.MID = memberEvent.MID where EID = (?) ");
-			pstmt.setInt(0, EID);
+			pstmt.setInt(1, EID);
 			ResultSet rs2 = pstmt.executeQuery();
 			
 			while(rs2.next()) {				
@@ -58,8 +58,8 @@ public class MemberDao {
 		Member currentSpecificMember = null;
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("select from Member where MID = (?)");
-			pstmt.setInt(0, MID);
+			PreparedStatement pstmt = con.prepareStatement("select * from Member where MID = (?)");
+			pstmt.setInt(1, MID); // changed from 0 to 1
 			ResultSet rs3 = pstmt.executeQuery();
 			
 			while(rs3.next()) {
@@ -79,9 +79,9 @@ public class MemberDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("insert into Member(f_name, l_name, email) values (?,?,?)");
-			pstmt.setString(0, newMember.getF_name());
-			pstmt.setString(1, newMember.getL_name());
-			pstmt.setString(2, newMember.getEmail());
+			pstmt.setString(1, newMember.getF_name());
+			pstmt.setString(2, newMember.getL_name());
+			pstmt.setString(3, newMember.getEmail());
 			int intResult = pstmt.executeUpdate(); 
 			System.out.println("Member Dao addNewMember=" +intResult);
 				

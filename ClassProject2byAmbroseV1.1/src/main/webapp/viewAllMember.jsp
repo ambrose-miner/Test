@@ -20,7 +20,7 @@
 	<core:forEach items="${sessionScope.listAllMember}" var="member">
 		<tr>
 			<td>
-				<form action="memberController" method="get">
+				<form action="memberController" method="post">
 				<input type=submit value= "View Details"/>
 				<input type="hidden" name="MID" value="${member.getMID()}"/>
 				<input type="hidden" name=userAction value=viewSpecificMember/>

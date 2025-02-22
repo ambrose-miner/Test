@@ -10,7 +10,7 @@
 <body>
 
 	<h2>Fill in Event Details</h2>
-	<form action = "EventController" method ="post">
+	<form action = "eventController" method ="post">
 		<input type="hidden" name=userAction value=addEvent/>
 		<label>Day</label>
 		<input type="text" name="day"/><br/>

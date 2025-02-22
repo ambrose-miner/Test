@@ -38,7 +38,7 @@ public class EventDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from Event innerjoin MemberEvent on Event.EID = MemberEvent.EID where MID = (?)");
-			pstmt.setInt(0, MID);
+			pstmt.setInt(1, MID);
 			ResultSet rs2 = pstmt.executeQuery();
 			
 			while(rs2.next()) {
@@ -59,8 +59,8 @@ public class EventDao {
 		Event currentSpecificEvent = null;
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("select from Event where EID = (?)");
-			pstmt.setInt(0, EID);
+			PreparedStatement pstmt = con.prepareStatement("select * from Event where EID = (?)");
+			pstmt.setInt(1, EID);
 			ResultSet rs3 = pstmt.executeQuery();
 			
 			while(rs3.next()) {
@@ -80,9 +80,9 @@ public class EventDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("insert into Event(day, time, location) values (?,?,?)");
-			pstmt.setString(0, newEvent.getDay());
-			pstmt.setString(1, newEvent.getTime());
-			pstmt.setString(2, newEvent.getLocation());
+			pstmt.setString(1, newEvent.getDay());
+			pstmt.setString(2, newEvent.getTime());
+			pstmt.setString(3, newEvent.getLocation());
 			int intResult = pstmt.executeUpdate(); 
 			System.out.println("Event Dao addNewEvent=" +intResult);
 			

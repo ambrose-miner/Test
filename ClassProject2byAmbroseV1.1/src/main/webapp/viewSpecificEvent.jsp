@@ -8,7 +8,7 @@
 <title>View Event</title>
 </head>
 <body>
-	<form action = "EventController" method = "post"> 
+	<form action = "eventController" method = "post"> 
 			<input type=submit value= "View Event"/>
 			<label>Enter Event ID</label>
 			<input type="number" name="EID"/><br/>
