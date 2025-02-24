@@ -25,4 +25,6 @@ public class EventService {
 		public void addNewEvent(Event event) {EventDao ed = new EventDao();
 			ed.addNewEvent(event);
 		}
+
+		
 }

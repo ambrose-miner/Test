@@ -13,9 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import com.zumba.bean.Event;
 import com.zumba.bean.Member;
+import com.zumba.bean.MemberEvent;
 import com.zumba.service.EventService;
 import com.zumba.service.MemberService;
-
+import com.zumba.service.MemberEventService;
 
 @WebServlet("/eventController")
 public class EventController extends HttpServlet {
@@ -28,6 +29,7 @@ public class EventController extends HttpServlet {
         super();
          ms = new MemberService();
          es = new EventService();
+         mes = new MemberEventService();
     }
    
     
@@ -43,7 +45,7 @@ public class EventController extends HttpServlet {
 		String userAction = request.getParameter("userAction");
 		if (userAction .equals("viewSpecificEvent")) {	
 	
-			int EID = Integer.parseInt(request.getParameter("EID")); // will this need a throws exception or try catch??
+			int EID = Integer.parseInt(request.getParameter("EID"));
 			Event ie = es.viewSpecificEvent(EID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("specificEvent", ie);
@@ -64,9 +66,15 @@ public class EventController extends HttpServlet {
 			es.addNewEvent(ne);
 			
 			doGet(request, response);
-		}else { //left for Expansion
+		}else if (userAction .equals("addMemberToEvent")) {
+			MemberEvent me = new MemberEvent();
+			int MID = Integer.parseInt(request.getParameter("MID"));
+			MemberEvent nme = mes.addMemberToEvent(Member);
+			HttpSession hs = request.getSession();
 			
-			doGet(request, response);//left for Expansion
+			response.sendRedirect("viewSpecificEvent.jsp");
+			
+			doGet(request, response);
 		}
 		
 	}

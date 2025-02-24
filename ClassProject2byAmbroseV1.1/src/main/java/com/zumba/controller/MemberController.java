@@ -46,7 +46,7 @@ public class MemberController extends HttpServlet {
 			int MID = Integer.parseInt(request.getParameter("MID"));
 			Member im = ms.viewSpecificMember(MID);
 			HttpSession hs = request.getSession();
-			hs.setAttribute("Member", im);
+			hs.setAttribute("specificMember", im);
 			List<Event> listOfEventForMember = es.viewEventsForMember(MID);
 			hs.setAttribute("listOfEvent", listOfEventForMember);
 			response.sendRedirect("viewSpecificMember.jsp");

@@ -33,7 +33,7 @@ public class EventDao {
 		return listOfevent;
 	}
 	
-	public List<Event> viewEventsForMember(int MID) {//add bean here later.
+	public List<Event> viewEventsForMember(int MID) {
 		List<Event> eventsForMember = new ArrayList<Event>();
 		try {
 			Connection con = DbConnection.getDbConnection();

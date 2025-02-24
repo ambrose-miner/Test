@@ -19,7 +19,7 @@
 		<th>Location</th>
 		
 	</tr>
-	<core:forEach items="${sessionScope.listEvent}" var="event">
+	<core:forEach items="${sessionScope.listAllEvent}" var="event">
 		<tr>
 			<td>
 				<form action="eventController" method="post">
