@@ -8,7 +8,7 @@ public class MemberEventService {
 	
 	
 	
-	public void addMemberToEvent(Member memberEvent) {
+	public void addMemberToEvent(MemberEvent memberEvent) {
 		med.addMemberToEvent(memberEvent);
 	}
 }

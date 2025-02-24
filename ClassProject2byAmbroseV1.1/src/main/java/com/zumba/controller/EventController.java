@@ -69,7 +69,7 @@ public class EventController extends HttpServlet {
 		}else if (userAction .equals("addMemberToEvent")) {
 			MemberEvent me = new MemberEvent();
 			int MID = Integer.parseInt(request.getParameter("MID"));
-			MemberEvent nme = mes.addMemberToEvent(Member);
+			MemberEvent nme = mes.addMemberToEvent(MemberEvent);
 			HttpSession hs = request.getSession();
 			
 			response.sendRedirect("viewSpecificEvent.jsp");
