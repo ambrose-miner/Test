@@ -12,7 +12,7 @@
 			<input type=submit value= "View Member"/>
 			<label>Enter Member ID</label>
 			<input type="number" name="MID"/><br/>
-			<input type="hidden" name=userAction value="viewSpecificMember"/>
+			<input type="hidden" name="userAction" value="viewSpecificMember"/>
 	</form>
 <h2>Selected Member Details</h2>
 

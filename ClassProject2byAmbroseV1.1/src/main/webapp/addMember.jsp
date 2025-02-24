@@ -11,7 +11,7 @@
 
 	<h2>Fill in Member Details</h2>
 	<form action = "memberController" method = "post"> 
-		<input type="hidden" name=userAction value=addMember/>
+		<input type="hidden" name="userAction" value="addMember"/>
 		<label>Member First Name</label>
 		<input type="text" name="F_name"/><br/>
 		<label>Member Last Name</label>

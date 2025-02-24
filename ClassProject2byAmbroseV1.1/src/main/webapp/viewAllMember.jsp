@@ -23,7 +23,7 @@
 				<form action="memberController" method="post">
 				<input type=submit value= "View Details"/>
 				<input type="hidden" name="MID" value="${member.getMID()}"/>
-				<input type="hidden" name=userAction value=viewSpecificMember/>
+				<input type="hidden" name="userAction" value="viewSpecificMember"/>
 				</form>
 			</td>
 			<td><core:out value="${member.getMID()}"></core:out> </td>

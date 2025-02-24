@@ -12,7 +12,7 @@
 			<input type=submit value= "View Event"/>
 			<label>Enter Event ID</label>
 			<input type="number" name="EID"/><br/>
-			<input type="hidden" name=userAction value=viewSpecificEvent/>
+			<input type="hidden" name="userAction" value="viewSpecificEvent"/>
 	</form>
 	<h2>Selected Event Details</h2>
 

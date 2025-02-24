@@ -37,7 +37,7 @@ public class EventDao {
 		List<Event> eventsForMember = new ArrayList<Event>();
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("select * from Event innerjoin MemberEvent on Event.EID = MemberEvent.EID where MID = (?)");
+			PreparedStatement pstmt = con.prepareStatement("select * from Event inner join MemberEvent on Event.EID = MemberEvent.EID where MID = (?)");
 			pstmt.setInt(1, MID);
 			ResultSet rs2 = pstmt.executeQuery();
 			

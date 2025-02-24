@@ -25,7 +25,7 @@
 				<form action="eventController" method="post">
 				<input type=submit value= "View Details"/>
 				<input type="hidden" name="EID" value="${event.getEID()}"/>
-				<input type="hidden" name=userAction value=viewSpecificEvent/>
+				<input type="hidden" name="userAction" value="viewSpecificEvent"/>
 				</form>
 			</td>
 			<td><core:out value="${event.getEID()}"></core:out> </td>
