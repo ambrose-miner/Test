@@ -29,7 +29,7 @@ public class EventController extends HttpServlet {
         super();
          ms = new MemberService();
          es = new EventService();
-         mes = new MemberEventService();
+         mes = new MemberEventService();// this is also flagging an error for mes. Why???
     }
    
     
@@ -67,9 +67,9 @@ public class EventController extends HttpServlet {
 			
 			doGet(request, response);
 		}else if (userAction .equals("addMemberToEvent")) {
-			MemberEvent me = new MemberEvent();
-			int MID = Integer.parseInt(request.getParameter("MID"));
-			MemberEvent nme = mes.addMemberToEvent(MemberEvent);
+			MemberEvent nme = new MemberEvent();
+			int MID = Integer.parseInt(request.getParameter("MID")); //do I need to get the EID in here as well? or pull it from the session??
+			mes.addMemberToEvent(nme); // why is it flagging an error for mes?
 			HttpSession hs = request.getSession();
 			
 			response.sendRedirect("viewSpecificEvent.jsp");
