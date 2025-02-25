@@ -59,7 +59,7 @@ public class MemberDao {
 		try {
 			Connection con = DbConnection.getDbConnection();
 			PreparedStatement pstmt = con.prepareStatement("select * from Member where MID = (?)");
-			pstmt.setInt(1, MID); // changed from 0 to 1
+			pstmt.setInt(1, MID); 
 			ResultSet rs3 = pstmt.executeQuery();
 			
 			while(rs3.next()) {
@@ -87,6 +87,16 @@ public class MemberDao {
 				
 		}catch (Exception e) {
 				System.err.println(e.toString());
+		}
+	}
+	public void removeMember(Member member) {
+		try {
+			Connection con = DbConnection.getDbConnection();
+			PreparedStatement pstmt = con.prepareStatement("delete from Member where MID = (?)");
+			pstmt.setInt(1, member.getMID());
+			int intResult = pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.err.println(e.toString());
 		}
 	}
 }

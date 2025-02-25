@@ -25,6 +25,8 @@ public class EventService {
 		public void addNewEvent(Event event) {EventDao ed = new EventDao();
 			ed.addNewEvent(event);
 		}
-
+		public void removeEvent(Event event) {EventDao ed = new EventDao();
+			ed.removeEvent(event);
+}
 		
 }

@@ -90,7 +90,16 @@ public class EventDao {
 			System.err.println(e.toString());
 		}
 	}
+	public void removeEvent(Event event) {
+		try {
+			Connection con = DbConnection.getDbConnection();
+			PreparedStatement pstmt = con.prepareStatement("delete from Event where EID = (?)");
+			pstmt.setInt(1, event.getEID());
+			int intResult = pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.err.println(e.toString());
+		}
+	}
 }
-
 
 

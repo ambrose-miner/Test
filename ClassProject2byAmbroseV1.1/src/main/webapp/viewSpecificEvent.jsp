@@ -34,7 +34,8 @@
 <form action = "eventController" method = "post"> 
 			<input type=submit value= "Add Member to Event"/>
 			<label>Enter Member ID</label>
-			<input type="number" name="MID"/><br/>
+			<input type="number" name="MID"/>
+			<input type="number" name="EID"><br/>
 			<input type="hidden" name="userAction" value="addMemberToEvent"/>
 	</form>
 <br/>

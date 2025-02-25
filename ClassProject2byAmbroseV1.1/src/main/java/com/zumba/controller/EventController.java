@@ -68,15 +68,23 @@ public class EventController extends HttpServlet {
 			doGet(request, response);
 		}else if (userAction .equals("addMemberToEvent")) {
 			MemberEvent nme = new MemberEvent();
-			int MID = Integer.parseInt(request.getParameter("MID")); //do I need to get the EID in here as well? or pull it from the session??
-			mes.addMemberToEvent(nme); // why is it flagging an error for mes?
 			HttpSession hs = request.getSession();
+			int MID = Integer.parseInt(request.getParameter("MID")); //I need to set these attributes to object 
+			int EID = Integer.parseInt(request.getParameter("EID"));
+			
+			mes.addMemberToEvent(nme); // why is it flagging an error for mes?
+			
 			
 			response.sendRedirect("viewSpecificEvent.jsp");
 			
-			doGet(request, response);
+			
+		}else if (userAction .equals("deleteEvent")) {
+			Event re = new Event();
+			int EID = Integer.parseInt(request.getParameter("EID"));
+			HttpSession hs = request.getSession();
+			es.removeEvent(re);
 		}
-		
+		doGet(request, response);
 	}
 
 }

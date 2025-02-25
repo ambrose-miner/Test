@@ -64,8 +64,12 @@ public class MemberController extends HttpServlet {
 				nm.setEmail(memberEmail);
 				ms.addNewMember(nm);
 				
-				doGet(request, response);
-			}else {
+				
+			}else if (userAction .equals("deleteMember")) {
+				Member rm = new Member();
+				int MID = Integer.parseInt(request.getParameter("MID"));
+				HttpSession hs = request.getSession();
+				ms.removeMember(rm);
 			
 		
 			doGet(request, response);
