@@ -29,7 +29,7 @@
 		</tr>
 </table>
 <br/>
-<form action = "eventController" method = "post"> 
+	<form action = "eventController" method = "post"> 
 			
 			<label>Enter Member ID</label><br/>
 			<input type="number" name="MID"/><br/>
@@ -38,6 +38,14 @@
 			<input type=submit value= "Add Member to Event"/><br/>
 	</form>
 <br/>
+	<form action = "memberController" method = "post"> 
+			
+			<label>Enter Member ID</label><br/>
+			<input type="number" name="MID"/><br/>
+			<input type="hidden" name="EID" value="${sessionScope.specificEvent.getEID()}"><br/>
+			<input type="hidden" name="userAction" value="removeMemberFromEvent"/>
+			<input type=submit value= "Remove Member from Event"/><br/>
+	</form>
 <h2>Members In Selected Event</h2>
 
 <table border = "1">

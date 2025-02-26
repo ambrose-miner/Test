@@ -9,9 +9,9 @@
 </head>
 <body>
 	<form action = "memberController" method = "post"> 
-			<input type=submit value= "View Member"/>
-			<label>Enter Member ID</label>
+			<label>Enter Member ID</label><br/>
 			<input type="number" name="MID"/><br/>
+			<input type=submit value= "View Member"/><br/>
 			<input type="hidden" name="userAction" value="viewSpecificMember"/>
 	</form>
 <h2>Selected Member Details</h2>
@@ -32,7 +32,7 @@
 </table>
 <br/>
 <h2>Member's Events</h2>
-
+	
 <table border = "1">
 	<tr>
 		<th>Event ID</th>
@@ -48,8 +48,15 @@
 			<td><core:out value="${event.getLocation()}"></core:out> </td>
 		</tr>
 	</core:forEach>
-
 </table>
+<form action = "memberController" method = "post"> 
+			
+			<label>Enter Event ID</label><br/>
+			<input type="number" name="EID"/><br/>
+			<input type="hidden" name="MID" value="${sessionScope.specificMember.getMID()}"><br/>
+			<input type="hidden" name="userAction" value="removeMemberFromEvent"/>
+			<input type=submit value= "Remove Member from Event"/><br/>
+	</form>
 <a href="index.jsp">Back</a>
 </body>
 </html>

@@ -11,4 +11,7 @@ public class MemberEventService {
 	public void addMemberToEvent(MemberEvent newMemberEvent) {
 		med.addMemberToEvent(newMemberEvent);
 	}
+	public void removeMemberFromEvent(MemberEvent MemberEvent) {
+		med.removeMemberFromEvent(MemberEvent);
+	}
 }

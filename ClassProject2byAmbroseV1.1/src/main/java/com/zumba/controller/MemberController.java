@@ -15,6 +15,7 @@ import com.zumba.bean.Member;
 import com.zumba.bean.Event;
 import com.zumba.service.MemberService;
 import com.zumba.service.EventService;
+import com.zumba.service.MemberEventService;
 
 @WebServlet("/memberController")
 public class MemberController extends HttpServlet {
@@ -28,6 +29,7 @@ public class MemberController extends HttpServlet {
 	
 		private MemberService ms = new MemberService();
 		private EventService es = new EventService();
+		private MemberEventService mes = new MemberEventService();
 		
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<Member> listOfMember = ms.viewAllMemberDetails();
@@ -68,12 +70,24 @@ public class MemberController extends HttpServlet {
 			}else if (userAction .equals("deleteMember")) {
 				Member rm = new Member();
 				int memberID = Integer.parseInt(request.getParameter("MID"));
-				HttpSession hs = request.getSession();
+				HttpSession hs = request.getSession();	// same as comment below right?
 				rm.setMID(memberID);
 				ms.removeMember(rm);
 			
 		
-			doGet(request, response);
+			doGet(request, response); // after removing a member takes user back to list of members
+			}
+			else if (userAction .equals("removeMemberFromEvent")) {
+				MemberEvent rmfe = new MemberEvent();
+				int memberID = Integer.parseInt(request.getParameter("MID"));
+				int eventID = Integer.parseInt(request.getParameter("EID"));
+				HttpSession hs = request.getSession(); // Do I need this line? I am getting the value of the strings from the request above
+				// but I am deleting and I don't use hs so I'm not putting anything in the session. Right? Same for Delete member above.
+				rmfe.setMID(memberID);
+				rmfe.setEID(eventID);
+				mes.removeMemberFromEvent(rmfe);
+				response.sendRedirect("viewSpecificEvent.jsp");//I need a conditional redirect response if I am going to have this in two places.
+				//If they are viewing the member and remove them from event vs if your on an event and remove a member and return them to viewing the event.
 			}
 		}
 }

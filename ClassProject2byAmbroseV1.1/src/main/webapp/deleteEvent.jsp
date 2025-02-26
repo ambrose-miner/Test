@@ -7,11 +7,13 @@
 
 </head>
 <body>
-<form action = "eventController" method = "post"> 
-			<input type=submit value= "Cancel Event "/>
-			<label>Enter Event ID</label>
+	<form action = "eventController" method = "post"> 
+			
+			<label>Enter Event ID</label><br/>
 			<input type="number" name="EID"/><br/>
+			<input type=submit value= "Cancel Event "/><br/>
 			<input type="hidden" name="userAction" value="deleteEvent"/>
 	</form>
+	<a href="index.jsp">Back</a>
 </body>
 </html>

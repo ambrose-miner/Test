@@ -32,7 +32,7 @@ public class MemberService {
 		public Member viewSpecificMember(int MID) {
 		 	return md.viewSpecificMember(MID);
 		}
-		public void removeMember(Member member) {MemberDao md = new MemberDao();
+		public void removeMember(Member member) {
 		md.removeMember(member);
-}
+		}
 }
