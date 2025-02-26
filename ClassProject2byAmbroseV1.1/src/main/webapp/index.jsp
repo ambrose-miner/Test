@@ -15,5 +15,7 @@
 <a href="eventController">View Events</a>|
 <a href="viewSpecificEvent.jsp">Look up Event</a>|
 <a href="viewSpecificMember.jsp">Look up Member</a>|
+<a href="deleteEvent.jsp">Cancel Event</a>
+<a href="deleteMember.jsp">Delete Member</a>
 </body>
 </html>

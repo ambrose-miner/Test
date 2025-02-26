@@ -92,9 +92,12 @@ public class MemberDao {
 	public void removeMember(Member member) {
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("delete from Member where MID = (?)");
-			pstmt.setInt(1, member.getMID());
-			int intResult = pstmt.executeUpdate();
+			PreparedStatement pstmt1 = con.prepareStatement("delete from MemberEvent where MID = (?)");
+			PreparedStatement pstmt2 = con.prepareStatement("delete from Member where MID = (?)");
+			pstmt1.setInt(1,member.getMID());
+			pstmt2.setInt(1,member.getMID());
+			int intResult1 = pstmt1.executeUpdate();
+			int intResult2 = pstmt2.executeUpdate();
 		}catch (Exception e) {
 			System.err.println(e.toString());
 		}

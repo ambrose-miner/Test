@@ -67,6 +67,7 @@ public class EventController extends HttpServlet {
 			es.addNewEvent(ne);
 			
 			doGet(request, response);
+			
 		}else if (userAction .equals("addMemberToEvent")) {
 			MemberEvent nme = new MemberEvent();
 			HttpSession hs = request.getSession();
@@ -75,7 +76,7 @@ public class EventController extends HttpServlet {
 			nme.setMID(memberID);
 			nme.setEID(eventID);
 			mes.addMemberToEvent(nme);
-			 //putting this back in the session so that in the event of added functions this will still display the member you put in to the event and the members already in the event.
+			 //putting this back in the session so that in the event of added functionality this will still display the member you put in to the event and the members already in the event.
 			Event ie = es.viewSpecificEvent(eventID);
 			hs.setAttribute("specificEvent", ie);
 			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(eventID);
@@ -88,8 +89,10 @@ public class EventController extends HttpServlet {
 			int eventID = Integer.parseInt(request.getParameter("EID"));
 			re.setEID(eventID);
 			es.removeEvent(re);
-		}
+			doGet(request, response);
+		}else {
 		doGet(request, response);
+		}
 	}
 
 }

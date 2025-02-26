@@ -93,9 +93,12 @@ public class EventDao {
 	public void removeEvent(Event event) {
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("delete from Event where EID = (?)");
-			pstmt.setInt(1, event.getEID());
-			int intResult = pstmt.executeUpdate();
+			PreparedStatement pstmt1 = con.prepareStatement("delete from MemberEvent where EID = (?)");
+			PreparedStatement pstmt2 = con.prepareStatement("delete from Event where EID = (?)");
+			pstmt1.setInt(1, event.getEID());
+			pstmt2.setInt(1, event.getEID());
+			int intResult1 = pstmt1.executeUpdate();
+			int intResult2 = pstmt2.executeUpdate();
 		}catch (Exception e) {
 			System.err.println(e.toString());
 		}

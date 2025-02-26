@@ -8,23 +8,21 @@
 <title>View Event</title>
 </head>
 <body>
-	<form action = "eventController" method = "post"> 
-			<input type=submit value= "View Event"/>
-			<label>Enter Event ID</label>
+	<form action = "eventController" method = "post"> 	
+			<label>Enter Event ID</label><br/>
 			<input type="number" name="EID"/><br/>
 			<input type="hidden" name="userAction" value="viewSpecificEvent"/>
+			<input type=submit value= "View Event"/>
 	</form>
 	<h2>Selected Event Details</h2>
 
 	<table border = "1">
 	<tr>
-		<th>Event ID</th>
 		<th>Day</th>
 		<th>Location</th>
 		<th>Time</th>
 	</tr>
 		<tr>
-			<td><core:out value="${sessionScope.specificEvent.getEID()}"></core:out> </td>
 			<td><core:out value="${sessionScope.specificEvent.getDay()}"></core:out> </td>
 			<td><core:out value="${sessionScope.specificEvent.getLocation()}"></core:out> </td>			
 			<td><core:out value="${sessionScope.specificEvent.getTime()}"></core:out> </td>
@@ -32,11 +30,12 @@
 </table>
 <br/>
 <form action = "eventController" method = "post"> 
-			<input type=submit value= "Add Member to Event"/>
-			<label>Enter Member ID</label>
-			<input type="number" name="MID"/>
-			<input type="number" name="EID"><br/>
+			
+			<label>Enter Member ID</label><br/>
+			<input type="number" name="MID"/><br/>
+			<input type="hidden" name="EID" value="${sessionScope.specificEvent.getEID()}"><br/>
 			<input type="hidden" name="userAction" value="addMemberToEvent"/>
+			<input type=submit value= "Add Member to Event"/><br/>
 	</form>
 <br/>
 <h2>Members In Selected Event</h2>
