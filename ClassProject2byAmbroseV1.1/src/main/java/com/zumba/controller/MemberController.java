@@ -43,11 +43,11 @@ public class MemberController extends HttpServlet {
 			String userAction = request.getParameter("userAction");
 			if (userAction .equals("viewSpecificMember")) {
 				
-			int MID = Integer.parseInt(request.getParameter("MID"));
-			Member im = ms.viewSpecificMember(MID);
+			int memberID = Integer.parseInt(request.getParameter("MID"));
+			Member im = ms.viewSpecificMember(memberID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("specificMember", im);
-			List<Event> listOfEventForMember = es.viewEventsForMember(MID);
+			List<Event> listOfEventForMember = es.viewEventsForMember(memberID);
 			hs.setAttribute("listOfEvent", listOfEventForMember);
 			response.sendRedirect("viewSpecificMember.jsp");
 			
@@ -67,8 +67,9 @@ public class MemberController extends HttpServlet {
 				
 			}else if (userAction .equals("deleteMember")) {
 				Member rm = new Member();
-				int MID = Integer.parseInt(request.getParameter("MID"));
+				int memberID = Integer.parseInt(request.getParameter("MID"));
 				HttpSession hs = request.getSession();
+				rm.setMID(memberID);
 				ms.removeMember(rm);
 			
 		

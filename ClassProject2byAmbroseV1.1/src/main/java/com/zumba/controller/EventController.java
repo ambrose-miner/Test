@@ -24,12 +24,13 @@ public class EventController extends HttpServlet {
 	
 	private	MemberService ms;// = new MemberService();
 	private    EventService es;// = new EventService();
+	private MemberEventService mes;// = new MemberEventService();
 	
     public EventController() {
         super();
          ms = new MemberService();
          es = new EventService();
-         mes = new MemberEventService();// this is also flagging an error for mes. Why???
+         mes = new MemberEventService();
     }
    
     
@@ -45,11 +46,11 @@ public class EventController extends HttpServlet {
 		String userAction = request.getParameter("userAction");
 		if (userAction .equals("viewSpecificEvent")) {	
 	
-			int EID = Integer.parseInt(request.getParameter("EID"));
-			Event ie = es.viewSpecificEvent(EID);
+			int eventID = Integer.parseInt(request.getParameter("EID"));
+			Event ie = es.viewSpecificEvent(eventID);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("specificEvent", ie);
-			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(EID);
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(eventID);
 			hs.setAttribute("listOfMember", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 			
@@ -69,19 +70,23 @@ public class EventController extends HttpServlet {
 		}else if (userAction .equals("addMemberToEvent")) {
 			MemberEvent nme = new MemberEvent();
 			HttpSession hs = request.getSession();
-			int MID = Integer.parseInt(request.getParameter("MID")); //I need to set these attributes to object 
-			int EID = Integer.parseInt(request.getParameter("EID"));
-			
-			mes.addMemberToEvent(nme); // why is it flagging an error for mes?
-			
-			
+			int memberID = Integer.parseInt(request.getParameter("MID"));
+			int eventID = Integer.parseInt(request.getParameter("EID"));
+			nme.setMID(memberID);
+			nme.setEID(eventID);
+			mes.addMemberToEvent(nme);
+			 //putting this back in the session so that in the event of added functions this will still display the member you put in to the event and the members already in the event.
+			Event ie = es.viewSpecificEvent(eventID);
+			hs.setAttribute("specificEvent", ie);
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(eventID);
+			hs.setAttribute("listOfMember", listOfMemberInEvent);
 			response.sendRedirect("viewSpecificEvent.jsp");
 			
 			
 		}else if (userAction .equals("deleteEvent")) {
 			Event re = new Event();
-			int EID = Integer.parseInt(request.getParameter("EID"));
-			HttpSession hs = request.getSession();
+			int eventID = Integer.parseInt(request.getParameter("EID"));
+			re.setEID(eventID);
 			es.removeEvent(re);
 		}
 		doGet(request, response);
