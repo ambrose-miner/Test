@@ -89,7 +89,22 @@ public class EventController extends HttpServlet {
 			int eventID = Integer.parseInt(request.getParameter("EID"));
 			re.setEID(eventID);
 			es.removeEvent(re);
-			doGet(request, response);
+			
+			doGet(request, response); //return user to viewing list of all events by calling doGet method.
+			
+		}else if (userAction .equals("removeMemberFromEvent")) {
+			MemberEvent rmfe = new MemberEvent();
+			HttpSession hs = request.getSession();
+			int memberID = Integer.parseInt(request.getParameter("MID"));
+			int eventID = Integer.parseInt(request.getParameter("EID"));
+			rmfe.setMID(memberID);
+			rmfe.setEID(eventID);
+			mes.removeMemberFromEvent(rmfe);
+			Event ie = es.viewSpecificEvent(eventID);
+			hs.setAttribute("specificEvent", ie);
+			List<Member> listOfMemberInEvent = ms.viewAllMembersInEvent(eventID);
+			hs.setAttribute("listOfMember", listOfMemberInEvent);
+			response.sendRedirect("viewSpecificEvent.jsp");
 		}else {
 		doGet(request, response);
 		}

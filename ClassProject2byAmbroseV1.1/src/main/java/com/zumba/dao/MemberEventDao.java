@@ -28,9 +28,9 @@ public class MemberEventDao {
 	public void removeMemberFromEvent(MemberEvent MemberEvent) {
 		try {
 			Connection con = DbConnection.getDbConnection();
-			PreparedStatement pstmt = con.prepareStatement("delete from MemberEvent(EID, MID) values (?,?)");
-			pstmt.setInt(1, MemberEvent.getEID());
-			pstmt.setInt(2, MemberEvent.getMID());
+			PreparedStatement pstmt = con.prepareStatement("delete from MemberEvent where MID = (?)");
+			pstmt.setInt(1, MemberEvent.getMID());
+			
 			int intResult = pstmt.executeUpdate();
 			
 		}catch (Exception e) {

@@ -70,7 +70,6 @@ public class MemberController extends HttpServlet {
 			}else if (userAction .equals("deleteMember")) {
 				Member rm = new Member();
 				int memberID = Integer.parseInt(request.getParameter("MID"));
-				HttpSession hs = request.getSession();	// same as comment below right?
 				rm.setMID(memberID);
 				ms.removeMember(rm);
 			
@@ -79,15 +78,19 @@ public class MemberController extends HttpServlet {
 			}
 			else if (userAction .equals("removeMemberFromEvent")) {
 				MemberEvent rmfe = new MemberEvent();
+				HttpSession hs = request.getSession();
 				int memberID = Integer.parseInt(request.getParameter("MID"));
 				int eventID = Integer.parseInt(request.getParameter("EID"));
-				HttpSession hs = request.getSession(); // Do I need this line? I am getting the value of the strings from the request above
-				// but I am deleting and I don't use hs so I'm not putting anything in the session. Right? Same for Delete member above.
 				rmfe.setMID(memberID);
 				rmfe.setEID(eventID);
 				mes.removeMemberFromEvent(rmfe);
-				response.sendRedirect("viewSpecificEvent.jsp");//I need a conditional redirect response if I am going to have this in two places.
-				//If they are viewing the member and remove them from event vs if your on an event and remove a member and return them to viewing the event.
+				Member im = ms.viewSpecificMember(memberID);
+				hs.setAttribute("specificMember", im);
+				List<Event> listOfEventForMember = es.viewEventsForMember(memberID);
+				hs.setAttribute("listOfEvent", listOfEventForMember);
+				response.sendRedirect("viewSpecificMember.jsp");
+				
+				
 			}
 		}
 }

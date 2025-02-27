@@ -38,7 +38,7 @@
 			<input type=submit value= "Add Member to Event"/><br/>
 	</form>
 <br/>
-	<form action = "memberController" method = "post"> 
+	<form action = "eventController" method = "post">
 			
 			<label>Enter Member ID</label><br/>
 			<input type="number" name="MID"/><br/>
