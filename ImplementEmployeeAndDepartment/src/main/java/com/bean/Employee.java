@@ -10,12 +10,26 @@ private String fName;
 private String lName;
 private String Department;
 private int activeStatus;
+private String firstName;
+private String lastName;
 
 public int geteID() {
 	return eID;
 }
 public void seteID(int eID) {
 	this.eID = eID;
+}
+public String getFirstName() {
+	return firstName;
+}
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+public String getLastName() {
+	return lastName;
+}
+public void setLastName(String lastName) {
+	this.lastName = lastName;
 }
 public String getfName() {
 	return fName;

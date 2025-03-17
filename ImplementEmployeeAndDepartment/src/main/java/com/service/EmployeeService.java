@@ -25,4 +25,6 @@ EmployeeDao employeeDao;
 		while(li.hasNext()) {
 			Employee emp = li.next();
 			return li.Employee;
+		}
+	}
 }

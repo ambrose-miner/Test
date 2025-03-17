@@ -23,7 +23,7 @@ public class EmployeeDao {
 	
 	public int addNewEmployee(Employee employee) {
 		try {
-			return jdbcTemplate.update("insert into employee values(?,?,?)",
+			return jdbcTemplate.update("insert into employee values(?,?,?,?,?)",
 					employee.geteID(),employee.getfName(),employee.getlName(),employee.getDepartment(),employee.getActiveStatus());
 			} catch (Exception e) {
 			System.err.println(e.toString());
